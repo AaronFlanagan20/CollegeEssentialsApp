@@ -16,36 +16,36 @@ public class HomeScreen extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        cameraButton = (Button)findViewById(R.id.locate);//represents locate button on home scrren
+        cameraButton = (Button)findViewById(R.id.locate);//represents locate button on home screen
         cameraButton.setOnClickListener(this);
 
-        timetableButton = (Button)findViewById(R.id.timetable);//represents locate button on home scrren
+        timetableButton = (Button)findViewById(R.id.timetable);//represents timetable button on home screen
         timetableButton.setOnClickListener(this);
 
-        assignmentButton = (Button)findViewById(R.id.assignment);//represents locate button on home scrren
+        assignmentButton = (Button)findViewById(R.id.assignment);//represents assignment button on home screen
         assignmentButton.setOnClickListener(this);
 
-        aboutButton = (Button)findViewById(R.id.about);//represents locate button on home scrren
+        aboutButton = (Button)findViewById(R.id.about);//represents locate about on home screen
         aboutButton.setOnClickListener(this);
     }
 
     private void openCamera() {
-        startActivity(new Intent("com.gmit.gmit3D.main.Camera"));//open Camera activity
+        startActivity(new Intent("com.gmit.gmit3D.main.Locate"));//open Locate activity
         this.finish();
     }
 
     private void openTimetable(){
-        startActivity(new Intent("com.gmit.gmit3D.main.Timetable"));//open Camera activity
+        startActivity(new Intent("com.gmit.gmit3D.main.Timetable"));//open timetable activity
         this.finish();
     }
 
     private void openAssignment(){
-        startActivity(new Intent("com.gmit.gmit3D.main.Assignment"));//open Camera activity
+        startActivity(new Intent("com.gmit.gmit3D.main.Assignment"));//open assignment activity
         this.finish();
     }
 
     private void openAbout(){
-        startActivity(new Intent("com.gmit.gmit3D.main.About"));//open Camera activity
+        startActivity(new Intent("com.gmit.gmit3D.main.About"));//open about activity
         this.finish();
     }
 

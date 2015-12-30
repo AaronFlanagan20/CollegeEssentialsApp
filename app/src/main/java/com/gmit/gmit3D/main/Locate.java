@@ -3,15 +3,13 @@ package com.gmit.gmit3D.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 
-public class Camera extends Activity implements View.OnClickListener {
+public class Locate extends Activity implements View.OnClickListener {
 
     private Button cameraButton;
     private Button backButton;
-    private static final int number = 1337;
 
     /* called when activity is first created*/
     @Override
@@ -25,18 +23,17 @@ public class Camera extends Activity implements View.OnClickListener {
 
         backButton = (Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(this);
-
     }
 
     //Open camera
     private void openCamera() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, number);
+        startActivity(new Intent("com.gmit.gmit3D.camera.CameraActivity"));//open cameraActivity class
+        this.finish();
     }
 
     //Go back to main screen
     private void goBack(){
-        startActivity(new Intent(this,HomeScreen.class));//open Camera class
+        startActivity(new Intent(this,HomeScreen.class));//open home screen class
         this.finish();
     }
 

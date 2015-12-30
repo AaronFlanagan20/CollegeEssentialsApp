@@ -26,12 +26,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Camera"
+            android:name=".Locate"
             android:label="@string/title_activity_camera"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
-                <action android:name="com.gmit.gmit3D.main.Camera" />
+                <action android:name="com.gmit.gmit3D.main.Locate" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -61,11 +61,22 @@
         <activity
             android:name=".About"
             android:label="@string/title_activity_about"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="com.gmit.gmit3D.main.About" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.gmit.gmit3D.camera.CameraActivity"
+            android:label="@string/title_activity_camera"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="landscape">
+            <!-- configure this activity to use landscape orientation -->>
+            <intent-filter>
+                <action android:name="com.gmit.gmit3D.camera.CameraActivity"/>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

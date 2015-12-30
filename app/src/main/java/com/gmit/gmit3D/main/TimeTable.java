@@ -28,7 +28,7 @@ public class TimeTable extends Activity implements  View.OnClickListener {
 
     //Go back to main screen
     private void goBack(){
-        startActivity(new Intent(this,HomeScreen.class));//open Camera class
+        startActivity(new Intent(this,HomeScreen.class));//open Locate class
         this.finish();
     }
 
