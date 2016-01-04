@@ -2,7 +2,6 @@
 
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -45,38 +44,40 @@
         android:layout_marginTop="170dp" />
 
     /*Locate button*/
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="120dp"
+    <ImageButton
+        android:layout_width="100dp"
         android:layout_height="70dp"
+        android:background="@drawable/camera_icon"
         android:text="Locate"
         android:id="@+id/locate"
         android:onClick="openCamera"
-        android:layout_marginLeft="35dp"
-        android:layout_marginStart="35dp"
-        android:layout_alignTop="@+id/timetable"
+        android:layout_marginLeft="53dp"
+        android:layout_marginStart="53dp"
+        android:layout_above="@+id/about"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     /*Timetable button*/
-    <Button
+    <ImageButton
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="70dp"
+        android:background="@drawable/timetable_icon"
         android:text="Timetable"
         android:id="@+id/timetable"
-        android:layout_below="@+id/frontImage"
-        android:layout_toRightOf="@+id/locate"
-        android:layout_toEndOf="@+id/locate"
-        android:layout_marginLeft="43dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="57dp" />
+        android:layout_marginTop="57dp"
+        android:layout_below="@+id/homeScreenText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="53dp"
+        android:layout_marginEnd="53dp" />
 
     /*Assignment button*/
-    <Button
+    <ImageButton
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="70dp"
+        android:background="@drawable/assignment_icon"
         android:text="Assignment"
         android:id="@+id/assignment"
         android:layout_alignTop="@+id/about"
@@ -84,16 +85,18 @@
         android:layout_alignStart="@+id/locate" />
 
     /*About button*/
-    <Button
+    <ImageButton
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="70dp"
+        android:background="@drawable/about_icon"
         android:text="About"
         android:id="@+id/about"
         android:layout_below="@+id/timetable"
         android:layout_alignLeft="@+id/timetable"
         android:layout_alignStart="@+id/timetable"
         android:layout_marginTop="62dp" />
+
 </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
