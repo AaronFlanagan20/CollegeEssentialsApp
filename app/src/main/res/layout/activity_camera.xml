@@ -1,41 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#0080ff">
+    android:fitsSystemWindows="true"
+    tools:context="com.gmit.gmit3D.main.HomeScreen">
 
-    <TextView
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/homeScreenBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Locate"
-        android:id="@+id/cameraActivityText"
-        android:textSize="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp" />
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Camera"
-        android:id="@+id/openCamera"
-        android:onClick="openCamera"
-        android:layout_above="@+id/backButton"
-        android:layout_alignRight="@+id/backButton"
-        android:layout_alignEnd="@+id/backButton" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@drawable/background_theme">
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:id="@+id/backButton"
-        android:onClick="goBack"
-        android:layout_marginBottom="91dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Locate"
+            android:id="@+id/cameraActivityText"
+            android:textSize="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp" />
 
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Camera"
+            android:id="@+id/openCamera"
+            android:onClick="openCamera"
+            android:layout_above="@+id/backButton"
+            android:layout_alignRight="@+id/backButton"
+            android:layout_alignEnd="@+id/backButton" />
 
-</RelativeLayout>
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:id="@+id/backButton"
+            android:onClick="goBack"
+            android:layout_marginBottom="91dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

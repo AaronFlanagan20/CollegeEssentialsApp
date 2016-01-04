@@ -19,7 +19,7 @@ public class TimeTable extends AppCompatActivity implements  View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_table);
 
-        setStatusBarColor(findViewById(R.id.statusBarBackground),getResources().getColor(android.R.color.white));
+        //setStatusBarColor(findViewById(R.id.statusBarBackground),getResources().getColor(android.R.color.holo_blue_bright));
 
         /*Look for button on screen by id and assign listener*/
         backButton = (Button) findViewById(R.id.backButton);
@@ -41,36 +41,35 @@ public class TimeTable extends AppCompatActivity implements  View.OnClickListene
         }
     }
 
-    public void setStatusBarColor(View statusBar,int color){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow();
-            w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            //status bar height
-            int actionBarHeight = getActionBarHeight();
-            int statusBarHeight = getStatusBarHeight();
-            //action bar height
-            statusBar.getLayoutParams().height = actionBarHeight + statusBarHeight;
-            statusBar.setBackgroundColor(color);
-        }
-    }
-
-    public int getActionBarHeight() {
-        int actionBarHeight = 0;
-        TypedValue tv = new TypedValue();
-        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true))
-        {
-            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data,getResources().getDisplayMetrics());
-        }
-        return actionBarHeight;
-    }
-
-    public int getStatusBarHeight() {
-        int result = 0;
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = getResources().getDimensionPixelSize(resourceId);
-        }
-        return result;
-    }
+//    public void setStatusBarColor(View statusBar,int color){
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            Window w = getWindow();
+//            w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            //status bar height
+//            int statusBarHeight = getStatusBarHeight();
+//            //action bar height
+//            statusBar.getLayoutParams().height = statusBarHeight;
+//            statusBar.setBackgroundColor(color);
+//        }
+//    }
+//
+//    public int getActionBarHeight() {
+//        int actionBarHeight = 0;
+//        TypedValue tv = new TypedValue();
+//        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true))
+//        {
+//            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data,getResources().getDisplayMetrics());
+//        }
+//        return actionBarHeight;
+//    }
+//
+//    public int getStatusBarHeight() {
+//        int result = 0;
+//        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+//        if (resourceId > 0) {
+//            result = getResources().getDimensionPixelSize(resourceId);
+//        }
+//        return result;
+//    }
 
 }
