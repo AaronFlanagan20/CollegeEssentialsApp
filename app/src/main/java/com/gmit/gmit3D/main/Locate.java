@@ -4,24 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Locate extends AppCompatActivity implements View.OnClickListener {
 
-    private Button cameraButton;
-    private Button backButton;
+    private ImageButton cameraButton, backButton;
 
     /* called when activity is first created*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera);
+        setContentView(R.layout.activity_locate);
 
         /*Find buttons on screen and set listeners*/
-        cameraButton = (Button) findViewById(R.id.openCamera);
+        cameraButton = (ImageButton) findViewById(R.id.openCamera);
         cameraButton.setOnClickListener(this);
 
-        backButton = (Button) findViewById(R.id.backButton);
+        backButton = (ImageButton) findViewById(R.id.backButton);
         backButton.setOnClickListener(this);
     }
 

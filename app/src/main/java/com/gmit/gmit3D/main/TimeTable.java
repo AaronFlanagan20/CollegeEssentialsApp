@@ -9,10 +9,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class TimeTable extends AppCompatActivity implements  View.OnClickListener {
 
-    private Button backButton;
+    private ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class TimeTable extends AppCompatActivity implements  View.OnClickListene
         //setStatusBarColor(findViewById(R.id.statusBarBackground),getResources().getColor(android.R.color.holo_blue_bright));
 
         /*Look for button on screen by id and assign listener*/
-        backButton = (Button) findViewById(R.id.backButton);
+        backButton = (ImageButton) findViewById(R.id.backButton);
         backButton.setOnClickListener(this);
     }
 

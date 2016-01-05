@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Assignment extends AppCompatActivity implements View.OnClickListener {
 
-    private Button backButton;
+    private ImageButton backButton;
 
     /*Runs when activity first loads*/
     @Override
@@ -17,7 +18,7 @@ public class Assignment extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_assignment);
 
         /*Look for button on screen by id and assign listener*/
-        backButton = (Button) findViewById(R.id.backButton);
+        backButton = (ImageButton) findViewById(R.id.backButton);
         backButton.setOnClickListener(this);
     }
 

@@ -33,24 +33,24 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp" />
 
-        <Button
+        <ImageButton
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/camera_icon"
             android:text="Camera"
             android:id="@+id/openCamera"
             android:onClick="openCamera"
             android:layout_above="@+id/backButton"
-            android:layout_alignRight="@+id/backButton"
-            android:layout_alignEnd="@+id/backButton" />
+            android:layout_centerHorizontal="true" />
 
-        <Button
+        <ImageButton
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
+            android:background="@drawable/backbutton"
             android:text="Back"
             android:id="@+id/backButton"
             android:onClick="goBack"
-            android:layout_marginBottom="91dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 

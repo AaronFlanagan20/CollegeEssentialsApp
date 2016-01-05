@@ -2,7 +2,6 @@
 
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,16 +30,70 @@
             android:textSize="50dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp" />
+            android:layout_marginTop="100dp"
+            />
 
-        <Button
+        <ImageButton
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
+            android:background="@drawable/backbutton"
             android:text="Back"
             android:id="@+id/backButton"
             android:onClick="goBack"
-            android:layout_marginBottom="91dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" GMIT 3D aims to help with the navigation and life of a student throughout the college.\n\n Depending on your location, information will be displayed explaining the section of the college that you are in.\n\n GMIT 3D's key features: \n \t1. Navigation around the college.\n \t2. Timetable section to store day, modules and room.\n \t3. Assignment countdown timer.\n"
+            android:id="@+id/aboutAppText"
+            android:layout_marginTop="35dp"
+            android:layout_below="@+id/aboutScreenText"
+            />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/facebook_icon"
+            android:id="@+id/facebookButton"
+            android:onClick="openFacebookApp"
+            android:layout_marginRight="19dp"
+            android:layout_marginEnd="19dp"
+            android:layout_below="@+id/aboutAppText"
+            android:layout_toLeftOf="@+id/githubText"
+            android:layout_toStartOf="@+id/githubText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Link to GMIT Facebook page."
+            android:id="@+id/fbText"
+            android:layout_alignBottom="@+id/facebookButton"
+            android:layout_marginBottom="8dp"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/github_icon"
+            android:id="@+id/githubButton"
+            android:onClick="openGithub"
+            android:layout_above="@+id/backButton"
+            android:layout_alignLeft="@+id/facebookButton"
+            android:layout_alignStart="@+id/facebookButton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Link to apps code."
+            android:id="@+id/githubText"
+            android:layout_alignBottom="@+id/githubButton"
+            android:layout_alignLeft="@+id/fbText"
+            android:layout_alignStart="@+id/fbText"
+            android:layout_marginBottom="8dp"/>
+
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

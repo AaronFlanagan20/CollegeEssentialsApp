@@ -38,13 +38,13 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp" />
 
-        <Button
+        <ImageButton
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
+            android:background="@drawable/backbutton"
             android:text="Back"
             android:id="@+id/backButton"
             android:onClick="goBack"
-            android:layout_marginBottom="91dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
