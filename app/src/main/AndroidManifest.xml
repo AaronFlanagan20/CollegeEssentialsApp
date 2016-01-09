@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature android:name="android.hardware.camera" />
 
@@ -72,14 +74,21 @@
         <activity
             android:name="com.gmit.gmit3D.camera.CameraActivity"
             android:label="@string/title_activity_camera"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
-            <!--android:screenOrientation="landscape-->"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+            <!-- android:screenOrientation="landscape -->
+"
             <!-- configure this activity to use landscape orientation -->
             <intent-filter>
-                <action android:name="com.gmit.gmit3D.camera.CameraActivity"/>
+                <action android:name="com.gmit.gmit3D.camera.CameraActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.gmit.gmit3D.gps.PhoneLocation"
+            android:label="@string/title_activity_phone_location"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
