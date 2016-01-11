@@ -34,22 +34,18 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
 
     private void openCamera() {
         startActivity(new Intent("com.gmit.gmit3D.main.Locate"));//open Locate activity
-        this.finish();
     }
 
     private void openTimetable(){
         startActivity(new Intent("com.gmit.gmit3D.main.Timetable"));//open timetable activity
-        this.finish();
     }
 
     private void openAssignment(){
         startActivity(new Intent("com.gmit.gmit3D.main.Assignment"));//open assignment activity
-        this.finish();
     }
 
     private void openAbout(){
         startActivity(new Intent("com.gmit.gmit3D.main.About"));//open about activity
-        this.finish();
     }
 
     @Override

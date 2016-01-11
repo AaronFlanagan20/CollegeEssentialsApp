@@ -33,15 +33,25 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp" />
 
-        <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/backbutton"
-            android:text="Back"
-            android:id="@+id/backButton"
-            android:onClick="goBack"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:text="This section allows you to input your semester timetable. You will need to input the module name, room number and date of the class."
+            android:textSize="20sp"
+            android:id="@+id/timetableAboutText"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View"
+            android:id="@+id/viewButton"
+            android:onClick="openView"
+            android:layout_below="@+id/timetableAboutText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp" />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

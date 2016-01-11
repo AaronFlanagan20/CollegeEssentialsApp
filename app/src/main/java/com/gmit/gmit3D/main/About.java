@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,7 +17,7 @@ import android.widget.TextView;
 
 public class About extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton backButton, facebookButton, githubButton;
+    private ImageButton facebookButton, githubButton;
     private TextView text;
 
     /*Runs when activity first loads*/
@@ -25,9 +27,6 @@ public class About extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_about);
 
         /*Look for button on screen by id and assign listener*/
-        backButton = (ImageButton) findViewById(R.id.backButton);
-        backButton.setOnClickListener(this);
-
         facebookButton = (ImageButton) findViewById(R.id.facebookButton);
         facebookButton.setOnClickListener(this);
 
@@ -37,18 +36,9 @@ public class About extends AppCompatActivity implements View.OnClickListener {
         text = (TextView) findViewById(R.id.aboutAppText);
     }
 
-    //Go back to main screen
-    private void goBack(){
-        startActivity(new Intent(this, HomeScreen.class));//open HomeScrren class
-        this.finish();//end this class
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){//used to check for all buttons
-            case R.id.backButton://if back button go to home screen
-                goBack();
-                break;
             case R.id.facebookButton:
                 openFacebookApp();
                 break;
@@ -58,13 +48,12 @@ public class About extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-
     private Intent connectToFacebookApp(Context context) {
         try {
             context.getPackageManager()
                     .getPackageInfo("com.facebook.katana", 0); //Checks if FB is even installed.
             return new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("fb://page/112460558766931")); //Trys to make intent with FB's URI
+                    Uri.parse("fb://facewebmodal/f?href=https://www.facebook.com/GMITOfficial")); //Trys to make intent with FB's URI
         } catch (Exception e) {
             e.printStackTrace();
             return new Intent(Intent.ACTION_VIEW,

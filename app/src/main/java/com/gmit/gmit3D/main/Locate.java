@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 
 public class Locate extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton cameraButton, backButton;
+    private ImageButton cameraButton;
 
     /* called when activity is first created*/
     @Override
@@ -19,21 +19,11 @@ public class Locate extends AppCompatActivity implements View.OnClickListener {
         /*Find buttons on screen and set listeners*/
         cameraButton = (ImageButton) findViewById(R.id.openCamera);
         cameraButton.setOnClickListener(this);
-
-        backButton = (ImageButton) findViewById(R.id.backButton);
-        backButton.setOnClickListener(this);
     }
 
     //Open camera
     private void openCamera() {
         startActivity(new Intent("com.gmit.gmit3D.camera.CameraActivity"));//open cameraActivity class
-        this.finish();
-    }
-
-    //Go back to main screen
-    private void goBack(){
-        startActivity(new Intent(this,HomeScreen.class));//open home screen class
-        this.finish();
     }
 
     @Override
@@ -41,9 +31,6 @@ public class Locate extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()){//used to check for all buttons
             case R.id.openCamera://if locate button open camera activity
                 openCamera();
-                break;
-            case R.id.backButton://if back button go to home screen
-                goBack();
                 break;
         }
     }

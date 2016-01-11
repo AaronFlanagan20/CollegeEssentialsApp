@@ -44,15 +44,5 @@
             android:layout_above="@+id/backButton"
             android:layout_centerHorizontal="true" />
 
-        <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/backbutton"
-            android:text="Back"
-            android:id="@+id/backButton"
-            android:onClick="goBack"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

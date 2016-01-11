@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.gmit.gmit3D.main.TimeTable">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/timetableBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@drawable/background_theme">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Schedule"
+            android:id="@+id/scheduleScreenText"
+            android:textSize="50dp"
+            android:layout_marginTop="52dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:orientation="vertical"
+            android:layout_below="@+id/scheduleScreenText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="84dp">
+
+            <!-- Top row -->
+            <TableRow
+                android:id="@+id/topRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/scheduleScreenText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                >
+
+                <TextView
+                    android:text="Day"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                     />
+                <TextView
+                    android:text="Module"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:text="Room"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+                <TextView
+                    android:text="Time"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+            </TableRow>
+
+            <!-- Monday row -->
+            <TableRow
+                android:id="@+id/mondayRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/scheduleScreenText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
+                >
+
+                <TextView
+                    android:text="Monday"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+            </TableRow>
+
+            <!-- Tuesday row -->
+            <TableRow
+                android:id="@+id/tuesdayRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/scheduleScreenText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
+                >
+
+                <TextView
+                    android:text="Tuesday"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+            </TableRow>
+
+            <!-- Wednesday row -->
+            <TableRow
+                android:id="@+id/wednesdayRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/scheduleScreenText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
+                >
+
+                <TextView
+                    android:text="Wednesday"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+            </TableRow>
+
+            <!-- Thursday row -->
+            <TableRow
+                android:id="@+id/thursdayRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/scheduleScreenText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
+                >
+
+                <TextView
+                    android:text="Thursday"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+            </TableRow>
+
+            <!-- Friday row -->
+            <TableRow
+                android:id="@+id/FridayRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/scheduleScreenText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
+                >
+
+                <TextView
+                    android:text="Friday"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+                <TextView
+                    android:text="Enter"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+            </TableRow>
+        </TableLayout>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:id="@+id/addButton"
+            android:onClick="addToTimetable"
+            android:layout_marginBottom="51dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
