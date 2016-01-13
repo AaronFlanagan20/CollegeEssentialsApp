@@ -9,4 +9,5 @@
     <string name="title_activity_phone_location">PhoneLocation</string>
     <string name="title_activity_timetable_input">TimetableInput</string>
     <string name="title_activity_timetable_schedule">TimetableSchedule</string>
+    <string name="title_activity_show_assignment_dates">ShowAssignmentDates</string>
 </resources>

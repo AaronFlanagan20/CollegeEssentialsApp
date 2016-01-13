@@ -2,7 +2,6 @@
 
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -26,24 +25,31 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Locate"
-            android:id="@+id/cameraActivityText"
+            android:text="Due Dates"
+            android:id="@+id/duedates"
             android:textSize="50dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp" />
 
-        <ImageButton
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/camera_icon"
-            android:text="Camera"
-            android:id="@+id/openCamera"
-            android:onClick="openCamera"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="77dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/moduleText"
+            android:layout_alignTop="@+id/dateText"
+            android:layout_alignRight="@+id/duedates"
+            android:layout_alignEnd="@+id/duedates"
+            android:layout_marginRight="56dp"
+            android:layout_marginEnd="56dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dateText"
+            android:layout_below="@+id/duedates"
+            android:layout_alignLeft="@+id/duedates"
+            android:layout_alignStart="@+id/duedates"
+            android:layout_marginTop="85dp" />
 
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

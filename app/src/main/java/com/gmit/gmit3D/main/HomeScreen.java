@@ -9,9 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.gmit.gmit3D.databases.ApplicationDatabase;
+
 public class HomeScreen extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton cameraButton, timetableButton, assignmentButton, aboutButton;
+    ApplicationDatabase ad;
 
     /* called when activity is first created*/
     @Override
@@ -30,6 +33,9 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
 
         aboutButton = (ImageButton)findViewById(R.id.about);//represents locate about on home screen
         aboutButton.setOnClickListener(this);
+
+        ad = new ApplicationDatabase(getBaseContext());
+        ad.createDatabase();
     }
 
     private void openCamera() {

@@ -96,6 +96,10 @@
         <activity
             android:name="com.gmit.gmit3D.databases.TimetableSchedule"
             android:label="@string/title_activity_timetable_schedule"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.gmit.gmit3D.databases.ShowAssignmentDates"
+            android:label="@string/title_activity_show_assignment_dates"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
