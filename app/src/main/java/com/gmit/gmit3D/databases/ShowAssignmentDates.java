@@ -17,6 +17,7 @@ public class ShowAssignmentDates extends AppCompatActivity {
 
     private TextView view1, view2;
     private ApplicationDatabase ad;
+    private AssignmentCountdownTimer ct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +30,10 @@ public class ShowAssignmentDates extends AppCompatActivity {
         view1 = (TextView) findViewById(R.id.moduleText);
 
         try {
-            Cursor cursor = ad.returnAssignmentData();
+            Cursor cursor = ad.returnAssignmentData();//cursor returns everythig from result set
             if(cursor.moveToFirst()){
-                view1.setText(cursor.getString(0));
+                view1.setText("ASDSSD" + " " + cursor.getString(0));
+
             }
         }catch (NullPointerException e){
             e.printStackTrace();

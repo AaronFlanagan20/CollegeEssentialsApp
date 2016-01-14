@@ -38,6 +38,9 @@ public class Assignment extends AppCompatActivity implements View.OnClickListene
 
         viewButton = (Button) findViewById(R.id.viewButton);
         viewButton.setOnClickListener(this);
+
+        ad = new ApplicationDatabase(this);
+        ad.createDatabase();//RETURN ALREADY MADE DB INSTANCE
     }
 
     @Override
@@ -54,17 +57,6 @@ public class Assignment extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    private void insertIntoDatabase(){
-            if (name != null && !name.equals("") && dueDate != null && !dueDate.equals("")) {
-                try {
-                    long id = ad.insertIntoAssignment(name, dueDate);
-                    viewButton.setText("" + id);
-                }catch(SQLException e){
-                    e.printStackTrace();
-                }
-        }
-    }
-
     private void openView(){
         startActivity(new Intent(this, ShowAssignmentDates.class));
     }
@@ -78,6 +70,10 @@ public class Assignment extends AppCompatActivity implements View.OnClickListene
         alert.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 name = editText.getText().toString();
+                if(!name.matches("[a-zA-Z]+")){
+                    dialog.cancel();
+                    enterName();
+                }
             }
         });
         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -94,10 +90,14 @@ public class Assignment extends AppCompatActivity implements View.OnClickListene
         alert = new AlertDialog.Builder(this);
         alert.setView(editText);
         alert.setTitle("Enter a time");
-        alert.setMessage("Time must be between 1-24 or ");
+        alert.setMessage("Time must be in 24hr format. eg. 13:00  ");
         alert.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 time = editText.getText().toString();
+                if(!time.matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")){
+                    dialog.cancel();
+                    enterTime();
+                }
             }
         });
         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -125,5 +125,18 @@ public class Assignment extends AppCompatActivity implements View.OnClickListene
         new DatePickerDialog(Assignment.this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+    private void insertIntoDatabase(){
+        if (name != null && !name.equals("") && dueDate != null && !dueDate.equals("")) {
+            try {
+                ad.insertIntoAssignment(name, dueDate);
+                name = null;
+                time = null;
+                dueDate = null;
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
     }
 }
