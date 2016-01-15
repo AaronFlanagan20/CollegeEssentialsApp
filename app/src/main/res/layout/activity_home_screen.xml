@@ -20,7 +20,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/homescreen_bg">
+    android:background="@drawable/GmitMap">
 
     <ImageView
         android:id="@+id/frontImage"
@@ -51,9 +51,9 @@
         android:text="Locate"
         android:id="@+id/locate"
         android:onClick="openCamera"
-        android:layout_marginLeft="53dp"
-        android:layout_marginStart="53dp"
-        android:layout_above="@+id/about"
+        android:layout_marginLeft="54dp"
+        android:layout_marginStart="54dp"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -65,24 +65,22 @@
         android:background="@drawable/timetable_icon"
         android:text="Timetable"
         android:id="@+id/timetable"
-        android:layout_marginTop="57dp"
-        android:layout_below="@+id/homeScreenText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="53dp"
-        android:layout_marginEnd="53dp" />
+        android:layout_alignTop="@+id/locate"
+        android:layout_alignLeft="@+id/about"
+        android:layout_alignStart="@+id/about" />
 
     /*Assignment button*/
     <ImageButton
         style="?android:attr/buttonStyleSmall"
         android:layout_width="100dp"
         android:layout_height="70dp"
-        android:background="@drawable/assignment_icon"
         android:text="Assignment"
         android:id="@+id/assignment"
-        android:layout_alignTop="@+id/about"
+        android:foreground="@drawable/assignment_icon"
+        android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/locate"
-        android:layout_alignStart="@+id/locate" />
+        android:layout_alignStart="@+id/locate"
+        android:layout_marginBottom="112dp" />
 
     /*About button*/
     <ImageButton
@@ -92,10 +90,23 @@
         android:background="@drawable/about_icon"
         android:text="About"
         android:id="@+id/about"
-        android:layout_below="@+id/timetable"
-        android:layout_alignLeft="@+id/timetable"
-        android:layout_alignStart="@+id/timetable"
-        android:layout_marginTop="62dp" />
+        android:layout_alignTop="@+id/assignment"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="52dp"
+        android:layout_marginEnd="52dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/assignment"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/GmitMap" />
 
 </RelativeLayout>
 
