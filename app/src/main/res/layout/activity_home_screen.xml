@@ -20,7 +20,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/homescreen_bg">
+    android:background="@drawable/GmitMap">
 
     <ImageView
         android:id="@+id/frontImage"
@@ -47,7 +47,7 @@
     <ImageButton
         android:layout_width="100dp"
         android:layout_height="70dp"
-        android:background="@drawable/camera_icon"
+        android:background="@drawable/camera"
         android:text="Locate"
         android:id="@+id/locate"
         android:onClick="openCamera"
@@ -62,7 +62,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="100dp"
         android:layout_height="70dp"
-        android:background="@drawable/timetable_icon"
+        android:background="@drawable/calendar"
         android:text="Timetable"
         android:id="@+id/timetable"
         android:layout_marginTop="57dp"
