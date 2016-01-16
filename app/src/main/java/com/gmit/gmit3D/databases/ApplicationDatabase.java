@@ -59,6 +59,10 @@ public class ApplicationDatabase{
         return db.query(TABLE_ASSIGNMENT, new String[]{"module", "due_date"}, null,null,null,null,null);
     }
 
+    public void deleteFromAssignment(String name){
+        db.execSQL("DELETE FROM " + TABLE_ASSIGNMENT +  " WHERE module ='" + name +"'");
+    }
+
     private static class ApplicationDatabaseHelper extends SQLiteOpenHelper{
 
         public ApplicationDatabaseHelper(Context context) {

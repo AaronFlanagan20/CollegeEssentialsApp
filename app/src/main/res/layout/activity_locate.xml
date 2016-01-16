@@ -37,7 +37,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/camera_icon"
+            android:background="@drawable/camera"
             android:text="Camera"
             android:id="@+id/openCamera"
             android:onClick="openCamera"

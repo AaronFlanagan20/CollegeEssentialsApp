@@ -20,7 +20,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/GmitMap">
+    android:background="@drawable/gmit_map">
 
     <ImageView
         android:id="@+id/frontImage"
@@ -37,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GMIT 3D"
+        android:textStyle="bold"
         android:id="@+id/homeScreenText"
         android:textSize="50dp"
         android:layout_alignParentTop="true"
@@ -45,38 +46,34 @@
 
     /*Locate button*/
     <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
         android:background="@drawable/camera"
         android:text="Locate"
         android:id="@+id/locate"
         android:onClick="openCamera"
-        android:layout_marginLeft="53dp"
-        android:layout_marginStart="53dp"
-        android:layout_above="@+id/about"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/timetable"
+        android:layout_alignLeft="@+id/homeScreenText"
+        android:layout_alignStart="@+id/homeScreenText" />
 
     /*Timetable button*/
     <ImageButton
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
         android:background="@drawable/calendar"
         android:text="Timetable"
         android:id="@+id/timetable"
-        android:layout_marginTop="57dp"
-        android:layout_below="@+id/homeScreenText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="53dp"
-        android:layout_marginEnd="53dp" />
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/frontImage"
+        android:layout_alignRight="@+id/homeScreenText"
+        android:layout_alignEnd="@+id/homeScreenText" />
 
     /*Assignment button*/
     <ImageButton
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
         android:background="@drawable/assignment_icon"
         android:text="Assignment"
         android:id="@+id/assignment"
@@ -87,8 +84,8 @@
     /*About button*/
     <ImageButton
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
         android:background="@drawable/about_icon"
         android:text="About"
         android:id="@+id/about"

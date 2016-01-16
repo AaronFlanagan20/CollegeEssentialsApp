@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,13 +19,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
+/*
+ * Creates a list of assignments due and keeps track by counting down
+ */
 public class ShowAssignmentDates extends AppCompatActivity {
 
     private ApplicationDatabase ad;
     private AssignmentCountdownTimer ct;
     private ListView lvItems;
     private List<Display> list;
+    private ImageButton deleteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +92,6 @@ public class ShowAssignmentDates extends AppCompatActivity {
         }
     }
 
-
     public class CountdownAdapter extends ArrayAdapter<Display> {
 
         private LayoutInflater lf;
@@ -131,6 +134,7 @@ public class ShowAssignmentDates extends AppCompatActivity {
                 convertView = lf.inflate(R.layout.list_item, parent, false);
                 holder.name = (TextView) convertView.findViewById(R.id.name);
                 holder.tvTimeRemaining = (TextView) convertView.findViewById(R.id.timeRemaining);
+                deleteButton = (ImageButton) convertView.findViewById(R.id.deleteButton);
                 convertView.setTag(holder);
                 synchronized (lstHolders) {
                     lstHolders.add(holder);
@@ -157,12 +161,24 @@ public class ShowAssignmentDates extends AppCompatActivity {
         }
 
         public void updateTimeRemaining(long currentTime) {
+            ViewHolder holder;
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(v.getId() == R.id.deleteButton){
+                        ad.deleteFromAssignment(mDisplay.name);
+                        ShowAssignmentDates.super.recreate();
+                    }
+                }
+            });
+
             long timeDiff = mDisplay.expirationTime - currentTime;
             if (timeDiff > 0) {
                 int seconds = (int) (timeDiff / 1000) % 60;
                 int minutes = (int) ((timeDiff / (1000 * 60)) % 60);
                 int hours = (int) ((timeDiff / (1000 * 60 * 60)) % 24);
-                tvTimeRemaining.setText(hours + " hrs " + minutes + " mins " + seconds + " sec");
+                int days = (int) ((timeDiff / 1000) / 86400);
+                tvTimeRemaining.setText(days + " days " + hours + " hrs " + minutes + " mins " + seconds + " sec");
             } else {
                 tvTimeRemaining.setText("Expired!!");
             }

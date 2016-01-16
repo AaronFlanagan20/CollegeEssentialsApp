@@ -3,7 +3,7 @@ package com.gmit.gmit3D.databases;
 import android.text.format.Time;
 
 /**
- * Created by Aaron on 12/01/2016.
+ * Gets current time in milliseconds
  */
 public class AssignmentCountdownTimer {
 
@@ -17,15 +17,7 @@ public class AssignmentCountdownTimer {
         futureTime.normalize(true);
         long futureMillis = futureTime.toMillis(true);
 
-        //sset date to current date
-        Time nowTime = new Time();
-
-        nowTime.setToNow();
-        nowTime.normalize(true);
-        long nowMillis = nowTime.toMillis(true);
-
-        // Subtract current milliseconds time from future milliseconds time to retrieve interval
-        intervalMillis = futureMillis - nowMillis;
+        intervalMillis = futureMillis;
     }
 
     public long getIntervalMillis(){
