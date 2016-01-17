@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
@@ -18,7 +19,6 @@ import android.widget.TextView;
 public class About extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton facebookButton, githubButton;
-    private TextView text;
 
     /*Runs when activity first loads*/
     @Override
@@ -33,7 +33,8 @@ public class About extends AppCompatActivity implements View.OnClickListener {
         githubButton = (ImageButton) findViewById(R.id.githubButton);
         githubButton.setOnClickListener(this);
 
-        text = (TextView) findViewById(R.id.aboutAppText);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.assignmentToolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override

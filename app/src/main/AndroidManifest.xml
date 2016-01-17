@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TimeTable"
+            android:name=".Timetable"
             android:label="@string/title_activity_time_table"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -90,17 +90,13 @@
             android:label="@string/title_activity_phone_location"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.gmit.gmit3D.databases.TimetableInput"
+            android:name="com.gmit.gmit3D.database.TimetableInput"
             android:label="@string/title_activity_timetable_input"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.gmit.gmit3D.databases.TimetableSchedule"
+            android:name="com.gmit.gmit3D.database.TimetableSchedule"
             android:label="@string/title_activity_timetable_schedule"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.gmit.gmit3D.databases.ShowAssignmentDates"
-            android:label="@string/title_activity_show_assignment_dates"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
