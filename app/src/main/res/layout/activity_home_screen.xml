@@ -94,6 +94,18 @@
         android:layout_alignStart="@+id/timetable"
         android:layout_marginTop="62dp" />
 
+
+
+    <ImageButton
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/map_icon"
+        android:text="About"
+        android:id="@+id/mapButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/assignment"
+        android:layout_toEndOf="@+id/assignment" />
 </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
