@@ -93,10 +93,6 @@
             android:name="com.gmit.gmit3D.database.TimetableInput"
             android:label="@string/title_activity_timetable_input"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.gmit.gmit3D.database.TimetableSchedule"
-            android:label="@string/title_activity_timetable_schedule"
-            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

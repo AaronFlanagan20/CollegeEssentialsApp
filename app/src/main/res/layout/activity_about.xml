@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:theme="@style/AppTheme" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -46,11 +46,12 @@
             android:background="@drawable/facebook_icon"
             android:id="@+id/facebookButton"
             android:onClick="openFacebookApp"
-            android:layout_marginRight="19dp"
-            android:layout_marginEnd="19dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_below="@+id/aboutAppText"
             android:layout_toLeftOf="@+id/githubText"
-            android:layout_toStartOf="@+id/githubText" />
+            android:layout_toStartOf="@+id/githubText"
+            android:layout_marginTop="49dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,10 +69,10 @@
             android:background="@drawable/github_icon"
             android:id="@+id/githubButton"
             android:onClick="openGithub"
+            android:layout_marginTop="22dp"
             android:layout_below="@+id/facebookButton"
             android:layout_alignLeft="@+id/facebookButton"
-            android:layout_alignStart="@+id/facebookButton"
-            android:layout_marginTop="68dp" />
+            android:layout_alignStart="@+id/facebookButton" />
 
         <TextView
             android:layout_width="wrap_content"

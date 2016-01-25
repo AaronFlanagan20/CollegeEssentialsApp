@@ -1,13 +1,15 @@
 package com.gmit.gmit3D.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import com.gmit.gmit3D.database.TimetableInput;
 
 public class Timetable extends AppCompatActivity {
-
-    private Button viewButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,21 +19,20 @@ public class Timetable extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.timetableToolbar);
         setSupportActionBar(toolbar);
 
-
-        /*Look for button on screen by id and assign listener*/
-        //viewButton = (Button) findViewById(R.id.viewButton);
-        //viewButton.setOnClickListener(this);
     }
 
-//    private void openView(){
-//        startActivity(new Intent(this, TimetableSchedule.class));
-//    }
-//
-//    public void onClick(View v) {
-//        switch (v.getId()){
-//            case R.id.viewButton:
-//                openView();
-//                break;
-//        }
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.add_icon){
+            startActivity(new Intent(this, TimetableInput.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

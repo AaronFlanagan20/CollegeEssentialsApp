@@ -4,7 +4,7 @@
     <string name="HomeScreenName">GMIT3D</string>
     <string name="title_activity_camera">CameraActivity</string>
     <string name="title_activity_time_table">Timetable</string>
-    <string name="title_activity_assignment">Assignment Timers</string>
+    <string name="title_activity_assignment">Assignments</string>
     <string name="title_activity_about">About</string>
     <string name="title_activity_phone_location">PhoneLocation</string>
     <string name="title_activity_timetable_input">TimetableInput</string>
