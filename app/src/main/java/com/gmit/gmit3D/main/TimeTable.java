@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.gmit.gmit3D.database.TimetableInput;
 
-public class Timetable extends AppCompatActivity {
+public class TimeTable extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -39,12 +39,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Timetable"
+            android:name=".TimeTable"
             android:label="@string/title_activity_time_table"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="com.gmit.gmit3D.main.Timetable" />
+                <action android:name="com.gmit.gmit3D.main.TimeTable" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
