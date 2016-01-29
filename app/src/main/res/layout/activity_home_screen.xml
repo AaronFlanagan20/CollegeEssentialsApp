@@ -53,11 +53,8 @@
         android:id="@+id/locate"
         android:onClick="openCamera"
         android:layout_alignTop="@+id/timetable"
-        android:layout_alignLeft="@+id/assignment"
-        android:layout_alignStart="@+id/assignment"
-        android:layout_alignBottom="@+id/timetable"
-        android:layout_alignRight="@+id/assignment"
-        android:layout_alignEnd="@+id/assignment" />
+        android:layout_alignLeft="@+id/homeScreenText"
+        android:layout_alignStart="@+id/homeScreenText" />
 
     /*Timetable button*/
     <ImageButton
@@ -67,9 +64,10 @@
         android:background="@drawable/calendar"
         android:text="Timetable"
         android:id="@+id/timetable"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/mapButton"
-        android:layout_toEndOf="@+id/mapButton" />
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/frontImage"
+        android:layout_alignRight="@+id/homeScreenText"
+        android:layout_alignEnd="@+id/homeScreenText" />
 
     /*Assignment button*/
     <ImageButton
@@ -80,21 +78,21 @@
         android:text="Assignment"
         android:id="@+id/assignment"
         android:layout_alignTop="@+id/about"
-        android:layout_toLeftOf="@+id/mapButton"
-        android:layout_toStartOf="@+id/mapButton" />
+        android:layout_alignLeft="@+id/locate"
+        android:layout_alignStart="@+id/locate" />
 
     /*About button*/
     <ImageButton
         style="?android:attr/buttonStyleSmall"
         android:layout_width="80dp"
         android:layout_height="60dp"
-        android:background="@drawable/Info_icon2"
+        android:background="@drawable/about_icon"
         android:text="About"
         android:id="@+id/about"
-        android:layout_marginTop="41dp"
         android:layout_below="@+id/timetable"
         android:layout_alignLeft="@+id/timetable"
-        android:layout_alignStart="@+id/timetable" />
+        android:layout_alignStart="@+id/timetable"
+        android:layout_marginTop="62dp" />
 
 
 
@@ -105,9 +103,9 @@
         android:background="@drawable/map_icon"
         android:text="About"
         android:id="@+id/mapButton"
-        android:layout_below="@+id/assignment"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/assignment"
+        android:layout_toEndOf="@+id/assignment" />
 </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
