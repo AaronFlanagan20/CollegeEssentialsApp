@@ -14,9 +14,9 @@ public class ApplicationDatabase{
     public static final String DATABASE_NAME = "gmit3d.db";
     public static final int DATABASE_VERSION = 1;
     public static final String TIMETABLE_CREATE = "create table "
-            + TABLE_TIMETABLE + " (module text not null, room integer not null, module_date date not null);";
+            + TABLE_TIMETABLE + " (module text not null, room text not null, teacher text not null, day text not null, time text not null);";
     public static final String ASSIGNMENT_CREATE = "create table "
-            + TABLE_ASSIGNMENT + " (module text not null, due_date date not null);";
+            + TABLE_ASSIGNMENT + " (name text not null, due_date date not null);";
 
     ApplicationDatabaseHelper adHelper;
     Context context;
@@ -36,31 +36,37 @@ public class ApplicationDatabase{
         adHelper.close();
     }
 
-    public long insertIntoTimetable(String module, int room, String module_date) {
+    public long insertIntoTimetable(String module, String room, String teacher, String day, String time) {
         ContentValues cv = new ContentValues();
         cv.put("module", module);
         cv.put("room", room);
-        cv.put("module_date", module_date);
+        cv.put("teacher", teacher);
+        cv.put("day", day);
+        cv.put("time", time);
         return db.insertOrThrow(TABLE_TIMETABLE, null, cv);
     }
 
     public long insertIntoAssignment(String module, String due_date) {
         ContentValues cv = new ContentValues();
-        cv.put("module", module);
+        cv.put("name", module);
         cv.put("due_date", due_date);
         return db.insertOrThrow(TABLE_ASSIGNMENT, null, cv);
     }
 
     public Cursor returnTimetableData(){
-        return db.query(TABLE_TIMETABLE, new String[]{"module", "room", "module_date"}, null, null, null, null, null);
+        return db.query(TABLE_TIMETABLE, new String[]{"module", "room", "teacher", "day", "time"}, null, null, null, null, null);
     }
 
     public Cursor returnAssignmentData(){
-        return db.query(TABLE_ASSIGNMENT, new String[]{"module", "due_date"}, null,null,null,null,null);
+        return db.query(TABLE_ASSIGNMENT, new String[]{"name", "due_date"}, null,null,null,null,null);
     }
 
     public void deleteFromAssignment(String name){
-        db.execSQL("DELETE FROM " + TABLE_ASSIGNMENT +  " WHERE module ='" + name +"'");
+        db.execSQL("DELETE FROM " + TABLE_ASSIGNMENT +  " WHERE name ='" + name +"'");
+    }
+
+    public void deleteFromTimetable(String module){
+        db.execSQL("DELETE FROM " + TABLE_TIMETABLE +  " WHERE module ='" + module +"'");
     }
 
     private static class ApplicationDatabaseHelper extends SQLiteOpenHelper{

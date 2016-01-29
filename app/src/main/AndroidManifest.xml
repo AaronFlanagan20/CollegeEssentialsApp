@@ -86,12 +86,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.gmit.gmit3D.gps.PhoneLocation"
-            android:label="@string/title_activity_phone_location"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="com.gmit.gmit3D.database.TimetableInput"
             android:label="@string/title_activity_timetable_input"
+            android:windowSoftInputMode="stateVisible"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
