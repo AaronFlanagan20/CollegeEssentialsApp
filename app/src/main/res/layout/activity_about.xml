@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:context="com.gmit.gmit3D.main.About">
 
@@ -12,7 +13,7 @@
         android:id="@+id/assignmentBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:theme="@style/AppTheme"
         >
 
         <android.support.v7.widget.Toolbar
@@ -28,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="@drawable/bg_image">
+        android:background="@drawable/bg_two">
 
         <TextView
             android:layout_width="350dp"

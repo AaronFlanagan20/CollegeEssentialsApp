@@ -52,7 +52,7 @@
         android:text="Locate"
         android:id="@+id/locate"
         android:onClick="openCamera"
-        android:layout_alignTop="@+id/timetable"
+        android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/homeScreenText"
         android:layout_alignStart="@+id/homeScreenText" />
 
@@ -64,8 +64,7 @@
         android:background="@drawable/calendar"
         android:text="Timetable"
         android:id="@+id/timetable"
-        android:layout_marginTop="70dp"
-        android:layout_below="@+id/frontImage"
+        android:layout_alignTop="@+id/locate"
         android:layout_alignRight="@+id/homeScreenText"
         android:layout_alignEnd="@+id/homeScreenText" />
 
@@ -86,7 +85,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="80dp"
         android:layout_height="60dp"
-        android:background="@drawable/about_icon"
+        android:background="@drawable/info_icon"
         android:text="About"
         android:id="@+id/about"
         android:layout_below="@+id/timetable"
@@ -105,7 +104,8 @@
         android:id="@+id/mapButton"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/assignment"
-        android:layout_toEndOf="@+id/assignment" />
+        android:layout_toEndOf="@+id/assignment"
+        android:layout_marginBottom="40dp" />
 </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

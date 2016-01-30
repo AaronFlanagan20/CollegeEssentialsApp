@@ -7,27 +7,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".TimetableInput">
+    tools:context=".TimeTableInput">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/timetableInputBar"
+        android:id="@+id/timetableinputAppbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:theme="@style/AppTheme"
         >
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/timetableToolbar"
+            android:id="@+id/timetableinputToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:theme="@style/AppTheme" />
+            app:theme="@style/AppTheme"
+            />
 
     </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_two">
 
         <EditText
             android:layout_width="match_parent"

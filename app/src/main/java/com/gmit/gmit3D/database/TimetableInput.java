@@ -35,7 +35,7 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timetable_input);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.timetableToolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.timetableinputToolbar);
         setSupportActionBar(toolbar);
 
         name = (EditText) findViewById(R.id.name);
