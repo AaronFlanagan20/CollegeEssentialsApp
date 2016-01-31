@@ -111,24 +111,25 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
         int minute = mcurrentTime.get(Calendar.MINUTE);
 
         TimePickerDialog mTimePicker;
-        mTimePicker = new TimePickerDialog(TimetableInput.this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
+        mTimePicker = new TimePickerDialog(TimetableInput.this,  new TimePickerDialog.OnTimeSetListener() {
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                 switch (selectedHour){
                     case 9: selectedTime = "nine"; break;
                     case 10: selectedTime = "ten"; break;
                     case 11: selectedTime = "eleven"; break;
                     case 12: selectedTime = "twelve"; break;
-                    case 1: selectedTime = "one"; break;
-                    case 2: selectedTime = "two"; break;
-                    case 3: selectedTime = "three"; break;
-                    case 4: selectedTime = "four"; break;
-                    case 5: selectedTime = "five"; break;
-                    case 6: selectedTime = "six"; break;
+                    case 13: selectedTime = "one"; break;
+                    case 14: selectedTime = "two"; break;
+                    case 15: selectedTime = "three"; break;
+                    case 16: selectedTime = "four"; break;
+                    case 17: selectedTime = "five"; break;
+                    case 18: selectedTime = "six"; break;
+                    default: CharSequence text = "Time 7 pm to 8am are not allowed";
+                             Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show(); break;
                 }
-                time.setText("" + selectedHour + ":" + selectedMinute);
+                time.setText("" + selectedHour);
             }
-        }, hour, minute, true);
+        }, hour, minute, false);
         mTimePicker.setTitle("Select Time");
         mTimePicker.show();
     }

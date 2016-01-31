@@ -40,7 +40,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="55dp" >
+            android:layout_marginTop="55dp"
+            android:isScrollContainer="true">
 
         <TableRow
             android:id="@+id/top_row"
@@ -120,51 +121,51 @@
                 android:text="9" />
 
             <TextView
-                android:id="@+id/monNine"
-                android:layout_width="wrap_content"
+                android:id="@+id/mon_Nine"
+                android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"
                 />
 
             <TextView
-                android:id="@+id/tueNine"
+                android:id="@+id/tue_Nine"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"
                 />
 
             <TextView
-                android:id="@+id/wedNine"
+                android:id="@+id/wed_Nine"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"
                 />
 
             <TextView
-                android:id="@+id/thuNine"
+                android:id="@+id/thu_Nine"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"
                 />
 
             <TextView
-                android:id="@+id/friNine"
+                android:id="@+id/fri_Nine"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"
                 />
@@ -188,52 +189,52 @@
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/monTen"
+                android:id="@+id/mon_Ten"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:paddingLeft="15dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"
                 />
 
             <TextView
-                android:id="@+id/tueTen"
+                android:id="@+id/tue_Ten"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"
                 />
 
             <TextView
-                android:id="@+id/wedTen"
+                android:id="@+id/wed_Ten"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"
                 />
 
             <TextView
-                android:id="@+id/thuTen"
+                android:id="@+id/thu_Ten"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"
                 />
 
             <TextView
-                android:id="@+id/friTen"
+                android:id="@+id/fri_Ten"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"
                 />
@@ -255,49 +256,49 @@
                 android:text="11" />
 
             <TextView
-                android:id="@+id/monEleven"
+                android:id="@+id/mon_Eleven"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:paddingLeft="15dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"
                 />
 
             <TextView
-                android:id="@+id/tueEleven"
+                android:id="@+id/tue_Eleven"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/wedEleven"
+                android:id="@+id/wed_Eleven"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/thuEleven"
+                android:id="@+id/thu_Eleven"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/friEleven"
+                android:id="@+id/fri_Eleven"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
         </TableRow>
@@ -318,48 +319,48 @@
                 android:text="12" />
 
             <TextView
-                android:id="@+id/monTwelve"
+                android:id="@+id/mon_Twelve"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:paddingLeft="15dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"/>
 
             <TextView
-                android:id="@+id/tueTwelve"
+                android:id="@+id/tue_Twelve"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"/>
 
             <TextView
-                android:id="@+id/wedTwelve"
+                android:id="@+id/wed_Twelve"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"/>
 
             <TextView
-                android:id="@+id/thuTwelve"
+                android:id="@+id/thu_Twelve"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"/>
 
             <TextView
-                android:id="@+id/friTwelve"
+                android:id="@+id/fri_Twelve"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"/>
         </TableRow>
@@ -381,48 +382,48 @@
                 android:text="1" />
 
             <TextView
-                android:id="@+id/monOne"
+                android:id="@+id/mon_One"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:paddingLeft="15dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"/>
 
             <TextView
-                android:id="@+id/tueOne"
+                android:id="@+id/tue_One"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"/>
 
             <TextView
-                android:id="@+id/wedOne"
+                android:id="@+id/wed_One"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"/>
 
             <TextView
-                android:id="@+id/thuOne"
+                android:id="@+id/thu_One"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"/>
 
             <TextView
-                android:id="@+id/friOne"
+                android:id="@+id/fri_One"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"
                 android:background="#FFFFFF"/>
 
@@ -445,48 +446,48 @@
                 android:text="2" />
 
             <TextView
-                android:id="@+id/monTwo"
+                android:id="@+id/mon_Two"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:paddingLeft="15dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/tueTwo"
+                android:id="@+id/tue_Two"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/wedTwo"
+                android:id="@+id/wed_Two"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/thuTwo"
+                android:id="@+id/thu_Two"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/friTwo"
+                android:id="@+id/fri_Two"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
         </TableRow>
@@ -508,49 +509,49 @@
                 android:text="3" />
 
             <TextView
-                android:id="@+id/monThree"
+                android:id="@+id/mon_Three"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:paddingLeft="15dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/tueThree"
+                android:id="@+id/tue_Three"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/wedThree"
+                android:id="@+id/wed_Three"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/thuThree"
+                android:id="@+id/thu_Three"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/friThree"
+                android:id="@+id/fri_Three"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:background="#FFFFFF"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"/>
         </TableRow>
 
@@ -571,48 +572,48 @@
                 android:text="4" />
 
             <TextView
-                android:id="@+id/monFour"
+                android:id="@+id/mon_Four"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:paddingLeft="15dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/tueFour"
+                android:id="@+id/tue_Four"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:background="#FFFFFF"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/wedFour"
+                android:id="@+id/wed_Four"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/thuFour"
+                android:id="@+id/thu_Four"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/friFour"
+                android:id="@+id/fri_Four"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
         </TableRow>
@@ -634,48 +635,48 @@
                 android:text="5" />
 
             <TextView
-                android:id="@+id/monFive"
+                android:id="@+id/mon_Five"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:paddingLeft="15dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/tueFive"
+                android:id="@+id/tue_Five"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:background="#FFFFFF"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/wedFive"
+                android:id="@+id/wed_Five"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/thuFive"
+                android:id="@+id/thu_Five"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:background="#FFFFFF"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/friFive"
+                android:id="@+id/fri_Five"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
         </TableRow>
@@ -697,48 +698,48 @@
                 android:text="6" />
 
             <TextView
-                android:id="@+id/monSix"
+                android:id="@+id/mon_Six"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:paddingLeft="15dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/tueSix"
+                android:id="@+id/tue_Six"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/wedSix"
+                android:id="@+id/wed_Six"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/thuSix"
+                android:id="@+id/thu_Six"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
 
             <TextView
-                android:id="@+id/friSix"
+                android:id="@+id/fri_Six"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.16"
-                android:gravity="center"
+                android:gravity="left"
                 android:background="#FFFFFF"
                 android:layout_margin="1px"/>
         </TableRow>
