@@ -28,7 +28,6 @@ public class TimeTable extends AppCompatActivity implements View.OnClickListener
 
     private TableLayout layout;
     private ApplicationDatabase ad;
-    private Map<TextView, String> map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +41,6 @@ public class TimeTable extends AppCompatActivity implements View.OnClickListener
 
         ad = new ApplicationDatabase(this);
         ad.createDatabase();
-
-        map = new HashMap<TextView, String>();
 
         try {
             getAllTextViews();
@@ -59,11 +56,11 @@ public class TimeTable extends AppCompatActivity implements View.OnClickListener
                 for(int x = 1; x < row.getChildCount(); x++){
                     if(row.getChildAt(x) instanceof TextView){
                         TextView temp = (TextView) row.getChildAt(x);
-                        temp.setMaxWidth(temp.getWidth());
-                        temp.setMaxWidth(temp.getHeight());
-                        temp.setMinHeight(temp.getHeight());
-                        temp.setMinWidth(temp.getWidth());
                         temp.setOnClickListener(this);
+                        temp.setMaxWidth(temp.getWidth());
+                        temp.setMinWidth(temp.getWidth());
+                        temp.setMaxHeight(temp.getWidth());
+                        temp.setMaxHeight(temp.getWidth());
                         paintTimetable(temp);
                     }
                 }
@@ -132,9 +129,12 @@ public class TimeTable extends AppCompatActivity implements View.OnClickListener
         }else{
             alert = new AlertDialog.Builder(this);
             alert.setTitle("Delete class ?");
+            final String[] split = ((String) view.getText()).split("\n");
+            TextView label = new TextView(this);
+            label.setText("Delete " + split[0]);
+            alert.setCustomTitle(label);
             alert.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    String[] split = ((String) view.getText()).split("\n");
                     ad.deleteFromTimetable(split[0]);
                     view.setText("");
                 }
