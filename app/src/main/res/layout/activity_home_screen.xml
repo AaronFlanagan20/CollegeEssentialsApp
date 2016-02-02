@@ -36,7 +36,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GMIT 3D"
+        android:text="Welcome"
         android:textStyle="bold"
         android:id="@+id/homeScreenText"
         android:textSize="50dp"

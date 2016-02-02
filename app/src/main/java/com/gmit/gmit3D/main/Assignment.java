@@ -47,7 +47,6 @@ public class Assignment extends AppCompatActivity {
     private List<Display> list;
     private ImageButton deleteButton;
     private ArrayList<Integer> colours;
-    int colour = 0;
 
     /*Runs when activity first loads*/
     @Override
@@ -251,8 +250,6 @@ public class Assignment extends AppCompatActivity {
             }, 1000, 1000);
         }
 
-        boolean used = false;
-
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder holder = null;
@@ -263,18 +260,6 @@ public class Assignment extends AppCompatActivity {
                 holder.name = (TextView) convertView.findViewById(R.id.name);
                 holder.tvTimeRemaining = (TextView) convertView.findViewById(R.id.timeRemaining);
                 deleteButton = (ImageButton) convertView.findViewById(R.id.deleteButton);
-                if(!used){
-                    convertView.setBackgroundColor(getRandomColor(colour));
-                    used = true;
-                }else{
-                    colour++;
-                    if(colour == 5){
-                        colour = 0;
-                        convertView.setBackgroundColor(getRandomColor(colour));
-                    }else{
-                        convertView.setBackgroundColor(getRandomColor(colour));
-                    }
-                }
                 convertView.setTag(holder);
                 synchronized (lstHolders) {
                     lstHolders.add(holder);
@@ -285,26 +270,28 @@ public class Assignment extends AppCompatActivity {
 
             holder.setData(getItem(position));
 
+            String daysLeft = getColour(holder.updateTimeRemaining(System.currentTimeMillis()));
+            if(daysLeft.equals("red")){
+                convertView.setBackgroundColor(Color.rgb(255,0,50));
+            }if(daysLeft.equals("blue")){
+                convertView.setBackgroundColor( Color.rgb(135,206,250));
+            }if(daysLeft.equals("green")){
+                convertView.setBackgroundColor(Color.rgb(0,255,127));
+            }
+
             return convertView;
         }
     }
 
-    private int getRandomColor(int index){
-        Random random = new Random();
-        colours = new ArrayList<Integer>();
-        int red = Color.rgb(255,0,50);
-        int blue = Color.rgb(135,206,250);
-        int green = Color.rgb(0,255,127);
-        int yellow = Color.rgb(255,255,0);
-        int orange = Color.rgb(255,165,0);
+    private String getColour(int day){
 
-        colours.add(0, red);
-        colours.add(1, blue);
-        colours.add(2, green);
-        colours.add(3, yellow);
-        colours.add(4, orange);
-
-        return colours.get(index);
+        if(day <= 7){
+            return "red";
+        }else if(day <= 14){
+            return "blue";
+        }else{
+            return "green";
+        }
     }
 
     private class ViewHolder {
@@ -318,7 +305,7 @@ public class Assignment extends AppCompatActivity {
             updateTimeRemaining(System.currentTimeMillis());
         }
 
-        public void updateTimeRemaining(long currentTime) {
+        public int updateTimeRemaining(long currentTime) {
             ViewHolder holder;
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -339,8 +326,10 @@ public class Assignment extends AppCompatActivity {
                 int hours = (int) ((timeDiff / (1000 * 60 * 60)) % 24);
                 int days = (int) ((timeDiff / 1000) / 86400);
                 tvTimeRemaining.setText(days + " days " + hours + " hrs " + minutes + " mins " + seconds + " sec");
+                return days;
             } else {
                 tvTimeRemaining.setText("Expired!!");
+                return 0;
             }
         }
     }
