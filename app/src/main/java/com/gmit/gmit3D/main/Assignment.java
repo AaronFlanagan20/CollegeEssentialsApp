@@ -273,8 +273,8 @@ public class Assignment extends AppCompatActivity {
             String daysLeft = getColour(holder.updateTimeRemaining(System.currentTimeMillis()));
             if(daysLeft.equals("red")){
                 convertView.setBackgroundColor(Color.rgb(255,0,50));
-            }if(daysLeft.equals("blue")){
-                convertView.setBackgroundColor( Color.rgb(135,206,250));
+            }if(daysLeft.equals("orange")){
+                convertView.setBackgroundColor( Color.rgb(255,165,0));
             }if(daysLeft.equals("green")){
                 convertView.setBackgroundColor(Color.rgb(0,255,127));
             }
@@ -288,7 +288,7 @@ public class Assignment extends AppCompatActivity {
         if(day <= 7){
             return "red";
         }else if(day <= 14){
-            return "blue";
+            return "orange";
         }else{
             return "green";
         }
