@@ -1,4 +1,4 @@
-package com.gmit.gmit3D.gps;
+package com.gmit.gmit3D.location;
 
 import android.content.Context;
 import android.location.Criteria;

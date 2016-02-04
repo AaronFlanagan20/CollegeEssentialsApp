@@ -8,9 +8,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
-import com.gmit.gmit3D.gps.PhoneLocation;
+import com.gmit.gmit3D.location.PhoneLocation;
 import com.gmit.gmit3D.main.R;
 
 public class CameraActivity extends Activity {

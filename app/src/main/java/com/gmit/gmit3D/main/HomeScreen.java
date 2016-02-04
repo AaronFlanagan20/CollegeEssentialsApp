@@ -1,9 +1,7 @@
 package com.gmit.gmit3D.main;
 
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.gmit.gmit3D.database.ApplicationDatabase;
-import com.gmit.gmit3D.gps.PhoneLocation;
+import com.gmit.gmit3D.location.PhoneLocation;
 
 import java.util.Locale;
 
