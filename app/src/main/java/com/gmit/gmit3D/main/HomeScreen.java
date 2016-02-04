@@ -1,18 +1,14 @@
 package com.gmit.gmit3D.main;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
+import com.gmit.gmit3D.camera.CameraActivity;
 import com.gmit.gmit3D.database.ApplicationDatabase;
-import com.gmit.gmit3D.location.PhoneLocation;
-
-import java.util.Locale;
+import com.gmit.gmit3D.location.MapsActivity;
 
 public class HomeScreen extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,38 +41,40 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
     }
 
     private void openCamera() {
-        startActivity(new Intent("com.gmit.gmit3D.main.Locate"));//open Locate activity
+        startActivity(new Intent(this, CameraActivity.class));//open camera activity
     }
 
     private void openTimetable(){
-        startActivity(new Intent("com.gmit.gmit3D.main.TimeTable"));//open timetable activity
+        startActivity(new Intent(this, TimeTable.class));//open timetable activity
     }
 
     private void openAssignment(){
-        startActivity(new Intent("com.gmit.gmit3D.main.Assignment"));//open assignment activity
+        startActivity(new Intent(this, Assignment.class));//open assignment activity
     }
 
     private void openAbout(){
-        startActivity(new Intent("com.gmit.gmit3D.main.About"));//open about activity
+        startActivity(new Intent(this, About.class));//open about activity
     }
 
     private void openMap(){
-        PhoneLocation loc = new PhoneLocation(this);
-        String uri = String.format(Locale.ENGLISH, "http://maps.google.com/maps");
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-        intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-        try
-        {
-            startActivity(intent);
-        }
-        catch(ActivityNotFoundException ex) {
-            try {
-                Intent unrestrictedIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                startActivity(unrestrictedIntent);
-            } catch (ActivityNotFoundException innerEx) {
-                Toast.makeText(this, "Please install the google maps application", Toast.LENGTH_LONG).show();
-            }
-        }
+//        PhoneLocation loc = new PhoneLocation(this);
+//        String uri = String.format(Locale.ENGLISH, "http://maps.google.com/maps");
+//        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+//        intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+//        try
+//        {
+//            startActivity(intent);
+//        }
+//        catch(ActivityNotFoundException ex) {
+//            try {
+//                Intent unrestrictedIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+//                startActivity(unrestrictedIntent);
+//            } catch (ActivityNotFoundException innerEx) {
+//                Toast.makeText(this, "Please install the google maps application", Toast.LENGTH_LONG).show();
+//            }
+//        }
+
+        startActivity(new Intent(this, MapsActivity.class));
     }
 
     @Override
