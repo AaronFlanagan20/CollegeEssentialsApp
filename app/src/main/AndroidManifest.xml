@@ -18,16 +18,25 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".CollegeSelection"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_college_selection"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".HomeScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                //this is the first activity launched
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="com.gmit.gmit3D.main.HomeScreen" />
+                <category android:name="android.intent.category.De" />
             </intent-filter>
         </activity>
         <activity
@@ -89,7 +98,7 @@
 
         <activity
             android:name="com.gmit.gmit3D.location.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
     </application>
 
 </manifest>

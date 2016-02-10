@@ -12,4 +12,5 @@
     <string name="title_activity_show_assignment_dates">ShowAssignmentDates</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_college_selection">Select a college</string>
 </resources>
