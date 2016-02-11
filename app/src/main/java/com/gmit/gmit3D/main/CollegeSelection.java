@@ -30,6 +30,7 @@ public class CollegeSelection extends AppCompatActivity implements ListView.OnIt
         setContentView(R.layout.activity_college_selection);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.collegeSelectionToolbar);
+        toolbar.setTitle("Select a college");
         setSupportActionBar(toolbar);
 
         list = (ListView) findViewById(R.id.collegeList);
