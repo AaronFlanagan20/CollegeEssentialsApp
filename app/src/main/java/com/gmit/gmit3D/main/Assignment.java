@@ -57,7 +57,7 @@ public class Assignment extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.assignmentToolbar);
         setSupportActionBar(toolbar);
 
-        ad = new ApplicationDatabase(this);
+        ad = new ApplicationDatabase(this, CollegeSelection.name);
         ad.createDatabase();
 
         lvItems = (ListView) findViewById(R.id.lvItems);

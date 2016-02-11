@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.gmit.gmit3D.main.CollegeSelection;
 import com.gmit.gmit3D.main.R;
 
 import java.sql.Time;
@@ -51,7 +52,7 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
         dayPicker = (TextView) findViewById(R.id.dayPick);
         dayPicker.setOnClickListener(this);
 
-        ad = new ApplicationDatabase(this);
+        ad = new ApplicationDatabase(this, CollegeSelection.name);
         ad.createDatabase();
 
     }

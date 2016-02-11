@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.gmit.gmit3D.database.ApplicationDatabase;
 import com.gmit.gmit3D.database.HerokuConnection;
 
 import java.sql.ResultSet;
@@ -22,7 +23,8 @@ public class CollegeSelection extends AppCompatActivity implements ListView.OnIt
 
     private ListView list;
     private HerokuConnection db;
-    private boolean isDone = false;
+    private ApplicationDatabase ad;
+    public static String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +52,13 @@ public class CollegeSelection extends AppCompatActivity implements ListView.OnIt
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        String itemValue = (String) list.getItemAtPosition(position);
+        name = (String) list.getItemAtPosition(position);
         Toast.makeText(getApplicationContext(),
-                "" + itemValue, Toast.LENGTH_SHORT)
+                "" + name, Toast.LENGTH_SHORT)
                 .show();
+
+        ad = new ApplicationDatabase(getBaseContext(), name);
+        ad.createDatabase();
         //progressbar
         Thread connect = new Thread(){
             public void run() {
@@ -103,6 +108,5 @@ public class CollegeSelection extends AppCompatActivity implements ListView.OnIt
 
         startActivity(new Intent(this, HomeScreen.class));
         this.finish();
-
     }
 }

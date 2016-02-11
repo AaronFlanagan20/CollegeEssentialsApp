@@ -39,7 +39,7 @@ public class TimeTable extends AppCompatActivity implements View.OnClickListener
 
         layout = (TableLayout) findViewById(R.id.table);
 
-        ad = new ApplicationDatabase(this);
+        ad = new ApplicationDatabase(this, CollegeSelection.name);
         ad.createDatabase();
 
         try {

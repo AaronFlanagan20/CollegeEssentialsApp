@@ -13,7 +13,6 @@ import com.gmit.gmit3D.location.MapsActivity;
 public class HomeScreen extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton cameraButton, timetableButton, assignmentButton, aboutButton, mapButton;
-    ApplicationDatabase ad;
 
     /* called when activity is first created*/
     @Override
@@ -35,9 +34,6 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
 
         mapButton = (ImageButton)findViewById(R.id.mapButton);//link to gmaps
         mapButton.setOnClickListener(this);
-
-        ad = new ApplicationDatabase(getBaseContext());
-        ad.createDatabase();
     }
 
     private void openCamera() {

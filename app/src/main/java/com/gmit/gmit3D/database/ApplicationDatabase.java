@@ -7,11 +7,12 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.gmit.gmit3D.main.CollegeSelection;
+
 public class ApplicationDatabase{
 
     public static final String TABLE_TIMETABLE = "timetable";
     public static final String TABLE_ASSIGNMENT = "assignment";
-    public static final String DATABASE_NAME = "gmit3d.db";
     public static final int DATABASE_VERSION = 1;
     public static final String TIMETABLE_CREATE = "create table "
             + TABLE_TIMETABLE + " (module text not null, room text not null, teacher text not null, day text not null, time text not null);";
@@ -21,10 +22,16 @@ public class ApplicationDatabase{
     ApplicationDatabaseHelper adHelper;
     Context context;
     SQLiteDatabase db;
+    String dbName;
 
-    public ApplicationDatabase(Context ctx){
+    public ApplicationDatabase(Context ctx, String dbName){
+        this.dbName = dbName;
         this.context = ctx;
-        adHelper = new ApplicationDatabaseHelper(context);
+        adHelper = new ApplicationDatabaseHelper(context, dbName);
+    }
+
+    public String getDbName() {
+        return dbName;
     }
 
     public ApplicationDatabase createDatabase() {
@@ -71,8 +78,11 @@ public class ApplicationDatabase{
 
     private static class ApplicationDatabaseHelper extends SQLiteOpenHelper{
 
-        public ApplicationDatabaseHelper(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        static CollegeSelection cs = new CollegeSelection();
+
+        public ApplicationDatabaseHelper(Context context, String dbName) {
+            super(context, dbName+".db", null, DATABASE_VERSION);
+            System.out.println(dbName);
         }
 
         @Override
