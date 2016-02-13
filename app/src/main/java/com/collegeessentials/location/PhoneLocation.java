@@ -1,4 +1,4 @@
-package com.gmit.gmit3D.location;
+package com.collegeessentials.location;
 
 import android.content.Context;
 import android.location.Criteria;

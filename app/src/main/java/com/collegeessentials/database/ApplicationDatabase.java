@@ -1,4 +1,4 @@
-package com.gmit.gmit3D.database;
+package com.collegeessentials.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.gmit.gmit3D.main.CollegeSelection;
+import com.collegeessentials.main.CollegeSelection;
 
 public class ApplicationDatabase{
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.gmit.gmit3D.main">
+    package="com.collegeessentials.main">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -32,7 +32,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="com.gmit.gmit3D.main.HomeScreen" />
+                <action android:name="com.collegeessentials.main.HomeScreen" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -42,7 +42,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="com.gmit.gmit3D.main.TimeTable" />
+                <action android:name="com.collegeessentials.main.TimeTable" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -53,7 +53,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="com.gmit.gmit3D.main.Assignment" />
+                <action android:name="com.collegeessentials.main.Assignment" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -63,12 +63,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="com.gmit.gmit3D.main.About" />
+                <action android:name="com.collegeessentials.main.About" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.gmit.gmit3D.camera.CameraActivity"
+            android:name="com.collegeessentials.camera.CameraActivity"
             android:label="@string/title_activity_camera"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -82,7 +82,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.gmit.gmit3D.database.TimetableInput"
+            android:name="com.collegeessentials.database.TimetableInput"
             android:label="@string/title_activity_timetable_input"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateVisible" />
@@ -92,7 +92,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="com.gmit.gmit3D.location.MapsActivity"
+            android:name="com.collegeessentials.location.MapsActivity"
             android:label="@string/title_activity_maps" />
     </application>
 

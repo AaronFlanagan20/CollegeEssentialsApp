@@ -7,7 +7,7 @@
     https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=A4:74:4B:3B:19:FB:36:79:C3:83:28:5E:89:72:39:F2:FD:27:68:F5%3Bcom.gmit.gmit3D.location
 
     You can also add your credentials to an existing key, using this line:
-    A4:74:4B:3B:19:FB:36:79:C3:83:28:5E:89:72:39:F2:FD:27:68:F5;com.gmit.gmit3D.location
+    A4:74:4B:3B:19:FB:36:79:C3:83:28:5E:89:72:39:F2:FD:27:68:F5;com.collegeessentials.location
 
     Alternatively, follow the directions here:
     https://developers.google.com/maps/documentation/android/start#get-key

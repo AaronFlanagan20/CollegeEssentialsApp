@@ -1,4 +1,4 @@
-package com.gmit.gmit3D.main;
+package com.collegeessentials.main;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,19 +10,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.gmit.gmit3D.database.ApplicationDatabase;
-import com.gmit.gmit3D.database.TimetableInput;
+import com.collegeessentials.database.ApplicationDatabase;
+import com.collegeessentials.database.TimetableInput;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class TimeTable extends AppCompatActivity implements View.OnClickListener {
 

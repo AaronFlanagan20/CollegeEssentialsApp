@@ -1,4 +1,4 @@
-package com.gmit.gmit3D.main;
+package com.collegeessentials.main;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.gmit.gmit3D.main;
+package com.collegeessentials.main;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -25,13 +25,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gmit.gmit3D.database.ApplicationDatabase;
-import com.gmit.gmit3D.database.AssignmentCountdownTimer;
+import com.collegeessentials.database.ApplicationDatabase;
+import com.collegeessentials.database.AssignmentCountdownTimer;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 

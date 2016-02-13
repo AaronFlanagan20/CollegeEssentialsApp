@@ -1,4 +1,4 @@
-package com.gmit.gmit3D.database;
+package com.collegeessentials.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package com.gmit.gmit3D.camera;
+package com.collegeessentials.camera;
 
 import android.content.Context;
 import android.graphics.Canvas;

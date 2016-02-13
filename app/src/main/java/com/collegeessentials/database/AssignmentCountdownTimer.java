@@ -1,4 +1,4 @@
-package com.gmit.gmit3D.database;
+package com.collegeessentials.database;
 
 import android.text.format.Time;
 

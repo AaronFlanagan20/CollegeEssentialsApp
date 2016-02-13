@@ -1,7 +1,6 @@
-package com.gmit.gmit3D.database;
+package com.collegeessentials.database;
 
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,10 +16,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.gmit.gmit3D.main.CollegeSelection;
-import com.gmit.gmit3D.main.R;
+import com.collegeessentials.main.CollegeSelection;
+import com.collegeessentials.main.R;
 
-import java.sql.Time;
 import java.util.Calendar;
 
 public class TimetableInput extends AppCompatActivity implements View.OnClickListener {

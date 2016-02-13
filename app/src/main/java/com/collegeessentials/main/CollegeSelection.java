@@ -1,19 +1,17 @@
-package com.gmit.gmit3D.main;
+package com.collegeessentials.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.gmit.gmit3D.database.ApplicationDatabase;
-import com.gmit.gmit3D.database.HerokuConnection;
+import com.collegeessentials.database.ApplicationDatabase;
+import com.collegeessentials.database.HerokuConnection;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

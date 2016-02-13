@@ -1,16 +1,17 @@
-package com.gmit.gmit3D.main;
+package com.collegeessentials.main;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
-import com.gmit.gmit3D.camera.CameraActivity;
-import com.gmit.gmit3D.database.ApplicationDatabase;
-import com.gmit.gmit3D.location.MapsActivity;
+import com.collegeessentials.camera.CameraActivity;
+import com.collegeessentials.location.MapsActivity;
 
 public class HomeScreen extends AppCompatActivity implements View.OnClickListener {
+
 
     private ImageButton cameraButton, timetableButton, assignmentButton, aboutButton, mapButton;
 
@@ -19,6 +20,9 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        ImageView image = (ImageView) findViewById(R.id.frontImage);
+        image.setBackgroundResource(R.drawable.college_front);
 
         cameraButton = (ImageButton)findViewById(R.id.locate);//represents locate button on home screen
         cameraButton.setOnClickListener(this);

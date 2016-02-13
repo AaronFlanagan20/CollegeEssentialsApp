@@ -1,9 +1,6 @@
-package com.gmit.gmit3D.camera;
+package com.collegeessentials.camera;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.hardware.Camera;
 import android.util.Log;
 import android.view.SurfaceHolder;

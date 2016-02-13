@@ -1,4 +1,4 @@
-package com.gmit.gmit3D.location;
+package com.collegeessentials.location;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -8,7 +8,7 @@ import android.hardware.SensorManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
-import com.gmit.gmit3D.main.R;
+import com.collegeessentials.main.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

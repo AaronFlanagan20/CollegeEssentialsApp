@@ -1,4 +1,4 @@
-package com.gmit.gmit3D.camera;
+package com.collegeessentials.camera;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,14 +8,13 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Toast;
 import android.widget.FrameLayout;
 
-import com.gmit.gmit3D.location.PhoneLocation;
-import com.gmit.gmit3D.main.R;
+import com.collegeessentials.location.PhoneLocation;
+import com.collegeessentials.main.R;
 
 public class CameraActivity extends Activity {
 
