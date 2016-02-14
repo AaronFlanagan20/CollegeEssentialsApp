@@ -82,7 +82,6 @@ public class ApplicationDatabase{
 
         public ApplicationDatabaseHelper(Context context, String dbName) {
             super(context, dbName+".db", null, DATABASE_VERSION);
-            System.out.println(dbName);
         }
 
         @Override

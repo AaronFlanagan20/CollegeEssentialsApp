@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.collegeessentials.database.ApplicationDatabase;
 import com.collegeessentials.database.HerokuConnection;
 
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -57,7 +58,7 @@ public class CollegeSelection extends AppCompatActivity implements ListView.OnIt
 
         ad = new ApplicationDatabase(getBaseContext(), name);
         ad.createDatabase();
-        //progressbar
+
         Thread connect = new Thread(){
             public void run() {
                 super.run();
@@ -83,17 +84,16 @@ public class CollegeSelection extends AppCompatActivity implements ListView.OnIt
                     int columnsNumber = rsmd.getColumnCount();
                     while (rs.next()) {
                         for (int i = 1; i <= columnsNumber; i++) {
-                            if (i > 1)
-                                System.out.print(",  ");
+                            //if (i > 1)
+                                //System.out.print(",  ");
                             String columnValue = rs.getString(i);
-                            System.out.print(columnValue);
+                            //System.out.print(columnValue);
                         }
                         System.out.println("");
                     }
                     }catch(SQLException e){
                         e.printStackTrace();
                     }
-
             }
         };
 
@@ -103,6 +103,23 @@ public class CollegeSelection extends AppCompatActivity implements ListView.OnIt
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        Thread image = new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                db.getImagesFromDB(getApplicationContext(), name);
+            }
+        };
+
+        try {
+            image.start();
+            image.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
 
         startActivity(new Intent(this, HomeScreen.class));
         this.finish();

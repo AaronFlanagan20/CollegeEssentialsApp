@@ -1,7 +1,13 @@
 package com.collegeessentials.database;
 
+import android.content.Context;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -49,7 +55,6 @@ public class HerokuConnection{
         ResultSet rs = null;
 
         try {
-            //connect();
             Statement stmt = connection.createStatement();
             rs = stmt.executeQuery(sqlStatement);
         }
@@ -59,19 +64,26 @@ public class HerokuConnection{
         return rs;
     }
 
-    public void executeUpdate(String sqlStatement) throws SQLException{
+    public void getImagesFromDB(Context context, String name) {
+
+        ResultSet rs = null;
+
         try {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(sqlStatement);
-        }
-        catch (SQLException e) {
-            throw e;
+            FileOutputStream out = context.openFileOutput(name, Context.MODE_PRIVATE);
+
+            PreparedStatement ps = connection.prepareStatement("SELECT imageBinary FROM selection WHERE imageName = ?");
+            ps.setString(1, name);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                byte[] imgBytes = rs.getBytes(1);
+                out.write(imgBytes);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
-//    @Override
-//    public void run() {
-//        super.run();
-//
-//    }
 }

@@ -1,14 +1,33 @@
 package com.collegeessentials.main;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.collegeessentials.camera.CameraActivity;
 import com.collegeessentials.location.MapsActivity;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class HomeScreen extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,22 +40,41 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        ImageView image = (ImageView) findViewById(R.id.frontImage);
-        image.setBackgroundResource(R.drawable.college_front);
+        File file = new File(getFilesDir() + "/" + CollegeSelection.name);
+        InputStream in = null;
+        try {
+            in = new FileInputStream(file);
+            ImageView imageView = (ImageView) findViewById(R.id.frontImage);
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
+            RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 530);
+            rl.setMargins(0, 0, 0, 690);
+            imageView.setLayoutParams(rl);
+            imageView.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(in !=null){
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
-        cameraButton = (ImageButton)findViewById(R.id.locate);//represents locate button on home screen
+        cameraButton = (ImageButton)findViewById(R.id.locate);
         cameraButton.setOnClickListener(this);
 
-        timetableButton = (ImageButton)findViewById(R.id.timetable);//represents timetable button on home screen
+        timetableButton = (ImageButton)findViewById(R.id.timetable);
         timetableButton.setOnClickListener(this);
 
-        assignmentButton = (ImageButton)findViewById(R.id.assignment);//represents assignment button on home screen
+        assignmentButton = (ImageButton)findViewById(R.id.assignment);
         assignmentButton.setOnClickListener(this);
 
-        aboutButton = (ImageButton)findViewById(R.id.about);//represents locate about on home screen
+        aboutButton = (ImageButton)findViewById(R.id.about);
         aboutButton.setOnClickListener(this);
 
-        mapButton = (ImageButton)findViewById(R.id.mapButton);//link to gmaps
+        mapButton = (ImageButton)findViewById(R.id.mapButton);
         mapButton.setOnClickListener(this);
     }
 
@@ -57,25 +95,9 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
     }
 
     private void openMap(){
-//        PhoneLocation loc = new PhoneLocation(this);
-//        String uri = String.format(Locale.ENGLISH, "http://maps.google.com/maps");
-//        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-//        intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-//        try
-//        {
-//            startActivity(intent);
-//        }
-//        catch(ActivityNotFoundException ex) {
-//            try {
-//                Intent unrestrictedIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-//                startActivity(unrestrictedIntent);
-//            } catch (ActivityNotFoundException innerEx) {
-//                Toast.makeText(this, "Please install the google maps application", Toast.LENGTH_LONG).show();
-//            }
-//        }
-
         startActivity(new Intent(this, MapsActivity.class));
     }
+
 
     @Override
     public void onClick(View v) {
