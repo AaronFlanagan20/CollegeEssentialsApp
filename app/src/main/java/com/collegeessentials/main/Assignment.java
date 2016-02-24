@@ -63,7 +63,7 @@ public class Assignment extends AppCompatActivity {
         list = new ArrayList<>();
 
         try {
-            Cursor cursor = ad.returnAssignmentData();//cursor returns everythig from result set
+            Cursor cursor = ad.returnAssignmentData();
             if (cursor.moveToFirst()) {
                 do {
                     String name = cursor.getString(0);

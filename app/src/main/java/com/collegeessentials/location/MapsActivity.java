@@ -3,6 +3,7 @@ package com.collegeessentials.location;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -14,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
+import com.collegeessentials.database.ApplicationDatabase;
+import com.collegeessentials.main.CollegeSelection;
 import com.collegeessentials.main.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,6 +33,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private String title;
+    private ApplicationDatabase ad;
     private FrameLayout fl;
     private SensorManager sensorManager;
     private Sensor accelerometer;
@@ -50,10 +54,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         fl = (FrameLayout) findViewById(R.id.mapLayout);
 
+        ad = new ApplicationDatabase(fl.getContext(), CollegeSelection.name);
+        ad.createDatabase();
+
         //setup the accelerometer
         sensorManager = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        // sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
         mapButton = (Button) findViewById(R.id.mapButton);
         mapButton.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +88,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
-            public void onMapClick(LatLng latLng) {
+            public void onMapClick(final LatLng latLng) {
                 final EditText editText = new EditText(getApplicationContext());
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(fl.getContext());
@@ -91,6 +98,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 alert.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         title = editText.getText().toString();
+                        ad.insertIntoMarkers(title, (float) latLng.latitude, (float) latLng.longitude);
+                        displayMarkers();
                     }
                 });
                 alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -100,16 +109,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 });
 
                 alert.create().show();
-
-                if(title != null){
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(latLng.latitude, latLng.longitude)).title(title));
-                }else{
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(latLng.latitude, latLng.longitude)).title("New Marker"));
-                }
-
             }
 
         });
+    }
+
+    private void displayMarkers(){
+
+        Cursor c = ad.returnMarkers();
+        if (c.moveToFirst()) {
+            do{
+                title = c.getString(0);
+                float lat = c.getFloat(1);
+                float lon = c.getFloat(2);
+
+                if(title != null) {
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
+                }else{
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title("New Marker"));
+                }
+            }while (c.moveToNext());
+        }
     }
 
     public void onSensorChanged(SensorEvent event){
@@ -198,5 +218,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         LatLng eye = new LatLng(53.2813322, -9.0334867);
         mMap.addMarker(new MarkerOptions().position(eye).title("Eye cinema"));
+
+        displayMarkers();
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(GMIT, 18));
     }
 }
