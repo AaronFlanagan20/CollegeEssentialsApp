@@ -31,7 +31,6 @@ import java.net.URL;
 
 public class HomeScreen extends AppCompatActivity implements View.OnClickListener {
 
-
     private ImageButton cameraButton, timetableButton, assignmentButton, aboutButton, mapButton;
 
     /* called when activity is first created*/

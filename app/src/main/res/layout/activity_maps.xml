@@ -1,4 +1,13 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mapLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/wallet_hint_foreground_holo_dark"
+    tools:context=".MapsActivity" >
+
+<fragment
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/map"
@@ -6,3 +15,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.collegeessentials.location.MapsActivity" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Map"
+        android:layout_marginLeft="50dp"
+        android:background="@null"
+        android:id="@id/mapButton"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hybrid"
+        android:background="@null"
+        android:id="@+id/hybridButton"
+        android:layout_marginLeft="150dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terrain"
+        android:background="@null"
+        android:id="@+id/terrainButton"
+        android:layout_marginLeft="250dp" />
+    </FrameLayout>

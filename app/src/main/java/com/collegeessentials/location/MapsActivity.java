@@ -1,12 +1,18 @@
 package com.collegeessentials.location;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 
 import com.collegeessentials.main.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -20,16 +26,17 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, SensorEventListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, SensorEventListener{
 
     private GoogleMap mMap;
-
+    private String title;
+    private FrameLayout fl;
     private SensorManager sensorManager;
     private Sensor accelerometer;
+    private Button mapButton, hybridButton, terrainButton;
     private float last_x, last_y, last_z;
 
     long lastUpdate = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +48,68 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        fl = (FrameLayout) findViewById(R.id.mapLayout);
+
         //setup the accelerometer
         sensorManager = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         // sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
+        mapButton = (Button) findViewById(R.id.mapButton);
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            }
+        });
 
+        hybridButton = (Button) findViewById(R.id.hybridButton);
+        hybridButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            }
+        });
 
+        terrainButton = (Button) findViewById(R.id.terrainButton);
+        terrainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+            }
+        });
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                final EditText editText = new EditText(getApplicationContext());
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(fl.getContext());
+                alert.setView(editText);
+                alert.setTitle("Marker Title");
+                alert.setMessage("Enter name of the marker. ");
+                alert.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        title = editText.getText().toString();
+                    }
+                });
+                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                alert.create().show();
+
+                if(title != null){
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(latLng.latitude, latLng.longitude)).title(title));
+                }else{
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(latLng.latitude, latLng.longitude)).title("New Marker"));
+                }
+
+            }
+
+        });
     }
 
     public void onSensorChanged(SensorEvent event){
@@ -116,19 +178,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if(mMap == null){
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                     .getMap();
-
-            if(mMap != null){
-
-                setUpMap();
-            }
         }
 
-    }
-
-    private void setUpMap(){
-        mMap.addMarker(new MarkerOptions().position(new LatLng(37.229, -80.424)).title("Virginia Tech"));
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.229, -80.42), 14.9f));
     }
 
     @Override
