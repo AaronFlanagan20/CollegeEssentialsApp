@@ -24,6 +24,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.SimpleDateFormat;
@@ -98,6 +99,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 alert.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         title = editText.getText().toString();
+                        if(title == null || title.equals(""))
+                            title = "New Marker";
                         ad.insertIntoMarkers(title, (float) latLng.latitude, (float) latLng.longitude);
                         displayMarkers();
                     }
@@ -110,7 +113,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 alert.create().show();
             }
+        });
 
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                // Remove the marker
+                marker.remove();
+                ad.deleteMarker(marker.getTitle());
+            }
         });
     }
 
