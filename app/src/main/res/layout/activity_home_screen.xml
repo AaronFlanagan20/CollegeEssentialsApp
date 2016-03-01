@@ -31,7 +31,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="94dp"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY"
+        android:contentDescription="Main image displayed on screen" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,13 +45,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="170dp" />
 
-    /*Locate button*/
+    /*Camera button*/
     <ImageButton
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:background="@drawable/camera"
         android:text="Locate"
-        android:id="@+id/locate"
+        android:id="@+id/cameraActivity"
         android:onClick="openCamera"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/homeScreenText"
@@ -64,7 +65,7 @@
         android:background="@drawable/calendar"
         android:text="Timetable"
         android:id="@+id/timetable"
-        android:layout_alignTop="@+id/locate"
+        android:layout_alignTop="@+id/cameraActivity"
         android:layout_alignRight="@+id/homeScreenText"
         android:layout_alignEnd="@+id/homeScreenText" />
 
@@ -77,8 +78,8 @@
         android:text="Assignment"
         android:id="@+id/assignment"
         android:layout_alignTop="@+id/about"
-        android:layout_alignLeft="@+id/locate"
-        android:layout_alignStart="@+id/locate" />
+        android:layout_alignLeft="@+id/cameraActivity"
+        android:layout_alignStart="@+id/cameraActivity" />
 
     /*About button*/
     <ImageButton

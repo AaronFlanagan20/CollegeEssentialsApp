@@ -21,7 +21,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,20 +33,25 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static java.lang.String.format;
+
+/**
+ * Assignment page allows users to input their current assignments
+ * and it will countdown how long is left till it's due
+ *
+ * Assignments with 7 days or less are coloured red
+ * Assignments with 14 days or less are coloured orange
+ * Assignments with 21 days or less are coloured green
+ *
+ * @version 1.0
+ * @see ApplicationDatabase, Display, CountdownAdapter
+ */
 public class Assignment extends AppCompatActivity {
 
-    private Calendar myCalendar = Calendar.getInstance();
-    private DatePickerDialog.OnDateSetListener date;
-    private AlertDialog.Builder alert;
     private ApplicationDatabase ad;
     private String name,time, dueDate;
-    private AssignmentCountdownTimer ct;
-    private ListView lvItems;
-    private List<Display> list;
     private ImageButton deleteButton;
-    private ArrayList<Integer> colours;
 
-    /*Runs when activity first loads*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +60,13 @@ public class Assignment extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.assignmentToolbar);
         setSupportActionBar(toolbar);
 
-        ad = new ApplicationDatabase(this, CollegeSelection.name);
+        ad = new ApplicationDatabase(this, CollegeSelection.name);//initialize database
         ad.createDatabase();
 
-        lvItems = (ListView) findViewById(R.id.lvItems);
-        list = new ArrayList<>();
+        ListView lvItems = (ListView) findViewById(R.id.lvItems);//ListView to hold all assignments
+        List<Display> list = new ArrayList<>();//list to populate with the current assignments
 
-        try {
+        try {//loop through database row by row and take out details
             Cursor cursor = ad.returnAssignmentData();
             if (cursor.moveToFirst()) {
                 do {
@@ -70,20 +74,20 @@ public class Assignment extends AppCompatActivity {
                     String date = cursor.getString(1);
 
                     //begin split
-                    String[] seperate = date.split("/");
-                    String day = seperate[0];
-                    String month = seperate[1];
-                    date = seperate[2];//date will equal year SPACE time
+                    String[] separate = date.split("/");
+                    String day = separate[0];
+                    String month = separate[1];
+                    date = separate[2];//date will equal year SPACE time
 
                     //must split again because 2016 13:00
-                    seperate = date.split(" ");//split space between year and time of day
-                    String year = seperate[0];
-                    String time = seperate[1];
+                    separate = date.split(" ");//split space between year and time of day
+                    String year = separate[0];
+                    String time = separate[1];
 
-                    //begin spliting time
-                    seperate = time.split(":");
-                    String hour = seperate[0];//eg 12, 1, 16
-                    String minute = seperate[1];
+                    //begin splitting time
+                    separate = time.split(":");
+                    String hour = separate[0];//eg 12, 1, 16
+                    String minute = separate[1];
 
                     //get integer values of strings
                     int minuteInt = Integer.parseInt(minute);
@@ -91,8 +95,9 @@ public class Assignment extends AppCompatActivity {
                     int yearInt = Integer.parseInt(year);
                     int monthInt = Integer.parseInt(month);
                     int dayInt = Integer.parseInt(day);
+                    //pass in times to custom timer
 
-                    ct = new AssignmentCountdownTimer(0, minuteInt, hourInt, dayInt, monthInt, yearInt);
+                    AssignmentCountdownTimer ct = new AssignmentCountdownTimer(0, minuteInt, hourInt, dayInt, monthInt, yearInt);
                     list.add(new Display(name, ct.getIntervalMillis()));
 
                     lvItems.setAdapter(new CountdownAdapter(Assignment.this, list));
@@ -113,7 +118,7 @@ public class Assignment extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if(id == R.id.add_icon){
+        if(id == R.id.add_icon){//if + sign call these methods
             enterDate();
             enterTime();
             enterName();
@@ -123,9 +128,9 @@ public class Assignment extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void enterName(){
+    private void enterName(){//input dialog for name
         final EditText editText = new EditText(this);
-        alert = new AlertDialog.Builder(this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setView(editText);
         alert.setTitle("Assignment name");
         alert.setMessage("Enter name of the assignment ");
@@ -146,10 +151,10 @@ public class Assignment extends AppCompatActivity {
 
         alert.create().show();
     }
-
-    private void enterTime(){
+    //TODO: Replace dialog with time picker
+    private void enterTime(){//input dialog for Time
         final EditText editText = new EditText(this);
-        alert = new AlertDialog.Builder(this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setView(editText);
         alert.setTitle("Enter a time");
         alert.setMessage("Time must be in 24hr format. eg. 13:00  ");
@@ -171,8 +176,9 @@ public class Assignment extends AppCompatActivity {
         alert.create().show();
     }
 
-    private void enterDate(){
-        date = new DatePickerDialog.OnDateSetListener() {
+    private void enterDate(){//DatePickerDialog for picking date assignment is due
+        final Calendar myCalendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
@@ -189,7 +195,7 @@ public class Assignment extends AppCompatActivity {
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-    private void insertIntoDatabase(){
+    private void insertIntoDatabase(){//insert assignment into database
         if (name != null && !name.equals("") && dueDate != null && !dueDate.equals("")) {
             try {
                 ad.insertIntoAssignment(name, dueDate);
@@ -215,10 +221,14 @@ public class Assignment extends AppCompatActivity {
         }
     }
 
+    /**
+     * CountdownAdapter acts as a custom adapter for our list
+     * It populates the screen with our assignments and constantly updates their times
+     */
     public class CountdownAdapter extends ArrayAdapter<Display> {
 
         private LayoutInflater lf;
-        private List<ViewHolder> lstHolders;
+        private final List<ViewHolder> lstHolders;
         private Handler mHandler = new Handler();
         private Runnable updateRemainingTimeRunnable = new Runnable() {
             @Override
@@ -251,24 +261,30 @@ public class Assignment extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder = null;
-            RelativeLayout relativeLayout;
+            /*
+                LIST
+                holder is an assignment
+                holder
+                holder
+             */
+            ViewHolder holder;
             if (convertView == null) {
-                holder = new ViewHolder();
-                convertView = lf.inflate(R.layout.assignment_list_items, parent, false);
-                holder.name = (TextView) convertView.findViewById(R.id.name);
-                holder.tvTimeRemaining = (TextView) convertView.findViewById(R.id.timeRemaining);
+                holder = new ViewHolder();//get our view
+                convertView = lf.inflate(R.layout.assignment_list_items, parent, false);//add our list
+                holder.name = (TextView) convertView.findViewById(R.id.name);//setup out name
+                holder.tvTimeRemaining = (TextView) convertView.findViewById(R.id.timeRemaining);//and time left
                 deleteButton = (ImageButton) convertView.findViewById(R.id.deleteButton);
-                convertView.setTag(holder);
+                convertView.setTag(holder);//set our view to hold these
                 synchronized (lstHolders) {
-                    lstHolders.add(holder);
+                    lstHolders.add(holder);//add our holder to the list
                 }
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            holder.setData(getItem(position));
+            holder.setData(getItem(position));//set all the data to it
 
+            //decide what colour to set based on remaining time
             String daysLeft = getColour(holder.updateTimeRemaining(System.currentTimeMillis()));
             if(daysLeft.equals("red")){
                 convertView.setBackgroundColor(Color.rgb(255,0,50));
@@ -282,6 +298,7 @@ public class Assignment extends AppCompatActivity {
         }
     }
 
+    //decide what colours to set to time frames
     private String getColour(int day){
 
         if(day <= 7){
@@ -293,38 +310,39 @@ public class Assignment extends AppCompatActivity {
         }
     }
 
+    //holds our assignments
     private class ViewHolder {
-        TextView name;
-        TextView tvTimeRemaining;
-        Display mDisplay;
+        TextView name;//assignment name
+        TextView tvTimeRemaining;//assignment time left
+        Display mDisplay;//object containing the details
 
         public void setData(Display item) {
-            mDisplay = item;
-            name.setText(item.name);
-            updateTimeRemaining(System.currentTimeMillis());
+            mDisplay = item;//set object
+            name.setText(item.name);//set objects name to ViewHolder view
+            updateTimeRemaining(System.currentTimeMillis());//update the assignments time
         }
 
         public int updateTimeRemaining(long currentTime) {
-            ViewHolder holder;
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(v.getId() == R.id.deleteButton){
-                        ad.deleteFromAssignment(mDisplay.name);
+                        ad.deleteFromAssignment(mDisplay.name);//delete from database where name is ...
                         CharSequence text = mDisplay.name + " has been deleted!";
                         Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
-                        Assignment.super.recreate();
+                        Assignment.super.recreate();//refresh screen with removed assignment
                     }
                 }
             });
 
+            /* Calculate and set the time left on the assignment */
             long timeDiff = mDisplay.expirationTime - currentTime;
-            if (timeDiff > 0) {
+            if(timeDiff > 0) {
                 int seconds = (int) (timeDiff / 1000) % 60;
                 int minutes = (int) ((timeDiff / (1000 * 60)) % 60);
                 int hours = (int) ((timeDiff / (1000 * 60 * 60)) % 24);
                 int days = (int) ((timeDiff / 1000) / 86400);
-                tvTimeRemaining.setText(days + " days " + hours + " hrs " + minutes + " mins " + seconds + " sec");
+                tvTimeRemaining.setText(format("%d days %d hrs %d min's %d sec", days, hours, minutes, seconds));
                 return days;
             } else {
                 tvTimeRemaining.setText("Expired!!");

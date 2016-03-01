@@ -14,7 +14,14 @@ import android.widget.Toast;
 import android.widget.FrameLayout;
 
 import com.collegeessentials.location.PhoneLocation;
-import com.collegeessentials.main.R;
+
+/**
+ * Our main camera activity.
+ * This class accesses the phones main camera and create a CameraPreview object to sit on top.
+ *
+ * @version 1.0
+ * @see CameraPreview
+ */
 
 public class CameraActivity extends Activity {
 
@@ -67,10 +74,10 @@ public class CameraActivity extends Activity {
 
         if (c != null){
 
-            alParent = new FrameLayout(this);
+            alParent = new FrameLayout(this);//create parent layout
             alParent.setLayoutParams(new LayoutParams(
                     LayoutParams.FILL_PARENT,
-                    LayoutParams.FILL_PARENT));
+                    LayoutParams.FILL_PARENT));//fill whole screen
 
             // Create a new camera view and add it to the layout
             mCameraPreview = new CameraPreview(this,c);
@@ -92,6 +99,7 @@ public class CameraActivity extends Activity {
         }
     }
 
+    /* Checks if the phone has it's location setting on, location must be on to use camera */
     public boolean checkGPSIsEnabled(){
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -118,7 +126,6 @@ public class CameraActivity extends Activity {
     @Override
     protected void onResume(){
         super.onResume();
-
         Load();
     }
 

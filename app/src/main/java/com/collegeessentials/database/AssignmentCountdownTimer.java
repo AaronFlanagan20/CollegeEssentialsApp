@@ -3,7 +3,10 @@ package com.collegeessentials.database;
 import android.text.format.Time;
 
 /**
- * Gets current time in milliseconds
+ * This class gets the current time in milliseconds, normalizes it and passes it back to our Assignment class.
+ *
+ * @version 1.0
+ * @see com.collegeessentials.main.Assignment
  */
 public class AssignmentCountdownTimer {
 

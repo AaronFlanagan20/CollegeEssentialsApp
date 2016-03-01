@@ -9,7 +9,11 @@ import android.view.SurfaceView;
 import java.io.IOException;
 
 /** The Camera Preview class
- * All camera and on screen animations are done in this class. */
+ * This is used to create a SurfaceHolder to hold our DrawView and manage everything
+ *
+ * @version 1.0
+ * @see DrawView
+ */
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
 
     private SurfaceHolder mHolder;

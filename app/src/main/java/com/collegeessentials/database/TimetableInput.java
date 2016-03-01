@@ -21,12 +21,19 @@ import com.collegeessentials.main.R;
 
 import java.util.Calendar;
 
+/**
+ * This activity gives the user the option to input a module name, room number and teacher name
+ * then select the day and time of the class. It inputs all the details into the database
+ *
+ * @version 1.0
+ * @see ApplicationDatabase
+ */
 public class TimetableInput extends AppCompatActivity implements View.OnClickListener {
 
     private EditText name, room, teacher;
     private TextView dayPicker;
     private ApplicationDatabase ad;
-    private Button time, colour;
+    private Button time;
     private String selectedTime = "nine", selectedDay = "mon";
 
     @Override
@@ -37,15 +44,13 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
         Toolbar toolbar = (Toolbar) findViewById(R.id.timetableinputToolbar);
         setSupportActionBar(toolbar);
 
+        /* Usual setup */
         name = (EditText) findViewById(R.id.name);
         room = (EditText) findViewById(R.id.room);
         teacher = (EditText) findViewById(R.id.teacher);
 
         time = (Button) findViewById(R.id.timeButton);
         time.setOnClickListener(this);
-
-        colour = (Button) findViewById(R.id.colourButton);
-        colour.setOnClickListener(this);
 
         dayPicker = (TextView) findViewById(R.id.dayPick);
         dayPicker.setOnClickListener(this);
@@ -70,7 +75,7 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
             String nameText = name.getText().toString();
             if(nameText.equals("")) {
                 nameMatch = false;
-                CharSequence text = " Name must not be empty";
+                CharSequence text = " Name must not be empty";//error notification
                 Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
             }else{
                 nameMatch = true;
@@ -80,11 +85,11 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
             if(!roomText.equals("") && !roomText.matches("[a-zA-Z0-9 ]+")) {
                 roomMatch = false;
                 CharSequence text = " Room must only contain numbers or letters";
-                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();//error notification
             }else if(roomText.equals("")){
                 roomMatch = false;
                 CharSequence text = " Room must not be empty";
-                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();//error notification
             }else {
                 roomMatch = true;
             }
@@ -94,10 +99,10 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
                 ad.insertIntoTimetable(nameText, roomText, tText, selectedDay, selectedTime);
                 this.finish();
             }else if(tText.equals("")){
-                CharSequence text = " Teacher must not be empty";
+                CharSequence text = " Teacher must not be empty";//error notification
                 Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
             }else{
-                CharSequence text = " Teacher must only contain letters";
+                CharSequence text = " Teacher must only contain letters";//error notification
                 Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
             }
         }
@@ -105,14 +110,14 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
     }
 
     private void pickTime(){
-        Calendar mcurrentTime = Calendar.getInstance();
-        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-        int minute = mcurrentTime.get(Calendar.MINUTE);
+        Calendar mCurrentTime = Calendar.getInstance();
+        int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mCurrentTime.get(Calendar.MINUTE);
 
         TimePickerDialog mTimePicker;
         mTimePicker = new TimePickerDialog(TimetableInput.this,  new TimePickerDialog.OnTimeSetListener() {
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                switch (selectedHour){
+                switch (selectedHour){//settings time based on user input
                     case 9: selectedTime = "nine"; break;
                     case 10: selectedTime = "ten"; break;
                     case 11: selectedTime = "eleven"; break;
@@ -124,7 +129,7 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
                     case 17: selectedTime = "five"; break;
                     case 18: selectedTime = "six"; break;
                     default: CharSequence text = "Time 7 pm to 8am are not allowed";
-                             Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show(); break;
+                             Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show(); break;//error notification
                 }
                 time.setText("" + selectedHour);
             }
@@ -133,10 +138,10 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
         mTimePicker.show();
     }
 
-    private void pickDay(){
+    private void pickDay(){//popup list with days to select
         final String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
         final ListPopupWindow listPopupWindow = new ListPopupWindow(TimetableInput.this);
-        listPopupWindow.setAdapter(new ArrayAdapter<String>(TimetableInput.this, R.layout.timetable_list_items, days));
+        listPopupWindow.setAdapter(new ArrayAdapter<>(TimetableInput.this, R.layout.timetable_list_items, days));
         listPopupWindow.setAnchorView(dayPicker);
 
         listPopupWindow.setWidth(900);
@@ -149,7 +154,7 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
                 String selected = days[position];
                 dayPicker.setText(selected);
 
-                switch (position){
+                switch (position){//set strings based on day selected
                     case 0: selectedDay = "mon"; break;
                     case 1: selectedDay = "tue"; break;
                     case 2: selectedDay = "wed"; break;

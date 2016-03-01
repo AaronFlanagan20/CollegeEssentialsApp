@@ -7,10 +7,16 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.collegeessentials.main.CollegeSelection;
-
+/**
+ * This application uses SQLiteDatabase as the app's background database, used to store assignments, timetables etc
+ * It also uses SQLiteOpenHelper to manage the creation and in the future the version controlling
+ *
+ * @version 1.0
+ * @see SQLiteDatabase, SQLiteOpenHelper, ApplicationDatabaseHelper
+ */
 public class ApplicationDatabase{
 
+    /* SQL Statements and table names */
     public static final String TABLE_TIMETABLE = "timetable";
     public static final String TABLE_ASSIGNMENT = "assignment";
     public static final String TABLE_MARKERS = "markers";
@@ -22,10 +28,10 @@ public class ApplicationDatabase{
     public static final String MARKERS_CREATE = "create table "
             + TABLE_MARKERS + "(title text, lat float, long float);";
 
-    ApplicationDatabaseHelper adHelper;
-    Context context;
-    SQLiteDatabase db;
-    String dbName;
+    private ApplicationDatabaseHelper adHelper;
+    private Context context;
+    private SQLiteDatabase db;
+    private String dbName;
 
     public ApplicationDatabase(Context ctx, String dbName){
         this.dbName = dbName;
@@ -33,19 +39,12 @@ public class ApplicationDatabase{
         adHelper = new ApplicationDatabaseHelper(context, dbName);
     }
 
-    public String getDbName() {
-        return dbName;
-    }
-
     public ApplicationDatabase createDatabase() {
         db = adHelper.getWritableDatabase();
         return this;
     }
 
-    public void close(){
-        adHelper.close();
-    }
-
+    /* Premade sql function to insert data into giveen table */
     public long insertIntoTimetable(String module, String room, String teacher, String day, String time) {
         ContentValues cv = new ContentValues();
         cv.put("module", module);
@@ -71,6 +70,7 @@ public class ApplicationDatabase{
         return db.insertOrThrow(TABLE_MARKERS, null, cv);
     }
 
+    //Returns everything as a Cursor that can be looped through
     public Cursor returnTimetableData(){
         return db.query(TABLE_TIMETABLE, new String[]{"module", "room", "teacher", "day", "time"}, null, null, null, null, null);
     }
@@ -83,6 +83,7 @@ public class ApplicationDatabase{
         return db.query(TABLE_MARKERS, new String[]{"title, lat, long"}, null,null,null,null,null);
     }
 
+    //Premade sql statement used to delete data where NAME = 'etc'
     public void deleteFromAssignment(String name){
         db.execSQL("DELETE FROM " + TABLE_ASSIGNMENT +  " WHERE name ='" + name +"'");
     }
@@ -95,9 +96,10 @@ public class ApplicationDatabase{
         db.execSQL("DELETE FROM " + TABLE_MARKERS +  " WHERE title ='" + title +"'");
     }
 
+    /**
+     * SQLiteOpenHelper is used to manage database creation and version management
+     */
     private static class ApplicationDatabaseHelper extends SQLiteOpenHelper{
-
-        static CollegeSelection cs = new CollegeSelection();
 
         public ApplicationDatabaseHelper(Context context, String dbName) {
             super(context, dbName+".db", null, DATABASE_VERSION);

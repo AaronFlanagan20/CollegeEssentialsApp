@@ -7,12 +7,15 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+/**
+ * PhoneLocation checks the gps of the phone to get the longitude and latitude of the phone
+ *
+ * @version 1.0
+ */
 public class PhoneLocation implements LocationListener{
 
     public Context context;
-    private LocationManager locationManager;
     public static Location location;
-    private String provider;
 
     private int lat, lng;
 
@@ -22,13 +25,13 @@ public class PhoneLocation implements LocationListener{
 
     public void getPreviousLocations(){
 
-        locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+        LocationManager locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
 
-        Criteria criteria = new Criteria();
-        provider = locationManager.getBestProvider(criteria, false);
+        Criteria criteria = new Criteria();//criteria for selecting best provider
+        String provider = locationManager.getBestProvider(criteria, false);//return any provider whether enabled or not that meets the criteria
         try {
             location = locationManager.getLastKnownLocation(provider);
-            locationManager.requestLocationUpdates(provider, 0, 0, this);
+            locationManager.requestLocationUpdates(provider, 0, 0, this);//receive updates
         }catch (SecurityException e){
             e.printStackTrace();
         }

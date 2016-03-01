@@ -30,15 +30,21 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * MapsActivity sets markers around Galway (more can be added) so that the user
+ * can find their way around the city.
+ *
+ * Markers can also be set by tapping on screen and typing out the marker name
+ * They can be deleted by tapping the marker and the tapping the markers name
+ *
+ * @version 1.0
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, SensorEventListener{
 
     private GoogleMap mMap;
     private String title;
     private ApplicationDatabase ad;
     private FrameLayout fl;
-    private SensorManager sensorManager;
-    private Sensor accelerometer;
-    private Button mapButton, hybridButton, terrainButton;
     private float last_x, last_y, last_z;
 
     long lastUpdate = 0;
@@ -59,11 +65,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ad.createDatabase();
 
         //setup the accelerometer
-        sensorManager = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
-        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        SensorManager sensorManager = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
+        Sensor accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
-        mapButton = (Button) findViewById(R.id.mapButton);
+        Button mapButton = (Button) findViewById(R.id.mapButton);
         mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +77,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-        hybridButton = (Button) findViewById(R.id.hybridButton);
+        Button hybridButton = (Button) findViewById(R.id.hybridButton);
         hybridButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +85,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-        terrainButton = (Button) findViewById(R.id.terrainButton);
+        Button terrainButton = (Button) findViewById(R.id.terrainButton);
         terrainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
