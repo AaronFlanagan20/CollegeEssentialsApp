@@ -1,10 +1,15 @@
 package com.collegeessentials.camera;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.util.Log;
+import android.view.Display;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.WindowManager;
 
 import java.io.IOException;
 
@@ -63,21 +68,41 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         // stop preview before making changes
         try {
             mCamera.stopPreview();
+            //setCameraDisplay(mCamera);//TODO: Get this working
         } catch (Exception e){
             // ignore: tried to stop a non-existent preview
         }
-
-        // set preview size and make any resize, rotate or
-        // reformatting changes here
 
         // start preview with new settings
         try {
             mCamera.setPreviewDisplay(mHolder);
             mCamera.startPreview();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.d("Problem", "Error starting camera preview: " + e.getMessage());
         }
+    }
+
+    public static int rotate = 0;
+
+    public void setCameraDisplay(Camera camera){
+        Camera.Parameters params = camera.getParameters();
+        Camera.CameraInfo info = new Camera.CameraInfo();
+
+        Camera.getCameraInfo(Camera.CameraInfo.CAMERA_FACING_BACK, info);
+
+        Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        int rotation = display.getRotation();
+        int degrees = 0;
+        switch (rotation) {
+            case Surface.ROTATION_0: degrees = 0; rotate = 0; break;
+            case Surface.ROTATION_90: degrees = 90; rotate = 90; break;
+            case Surface.ROTATION_180: degrees = 180; rotate = 180; break;
+            case Surface.ROTATION_270: degrees = 270; rotate = 270; break;
+        }
+
+        int result = (info.orientation - degrees + 360) % 360;
+        camera.setDisplayOrientation(result);
     }
 
     public void onPause(){

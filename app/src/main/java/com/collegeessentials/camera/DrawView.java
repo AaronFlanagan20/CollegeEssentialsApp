@@ -2,7 +2,11 @@ package com.collegeessentials.camera;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.hardware.Camera;
 import android.view.SurfaceView;
 
 /**
@@ -21,9 +25,6 @@ public class DrawView extends SurfaceView{
     public DrawView(Context context){
         super(context);
 
-        textPaint.setARGB(255, 200, 0, 0);//Colour red - ish
-        textPaint.setTextSize(60);//set size of thing being drawn
-
         /* This call is necessary, or else the
          * draw method will not be called.
          */
@@ -33,6 +34,35 @@ public class DrawView extends SurfaceView{
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawText("Hello", 50, 50, textPaint);//draw a string at x=50, y=50 with paint attributes
+
+        //gmit canteen 53.2791608,-9.0105963
+
+        textPaint.setARGB(255, 200, 0, 0);//Colour red - ish
+
+        /* Top arrow*/
+        textPaint.setTextSize(70);
+        canvas.drawText("300 Rooms", 1100, 500, textPaint);
+
+        textPaint.setStrokeWidth(20);
+        canvas.drawLine(1250, 100, 1250, 400, textPaint);
+
+        textPaint.setStyle(Paint.Style.STROKE);
+        textPaint.setStrokeWidth(2);
+        textPaint.setColor(Color.RED);
+        Path path = new Path();
+        path.moveTo(0, -100);
+        path.lineTo(50, 0);
+        path.lineTo(-50, 0);
+        path.close();
+
+        path.offset(1250, 100);
+        canvas.drawPath(path, textPaint);
+//
+//        /* Bottom arrow*/
+//        textPaint.setStrokeWidth(20);
+//        canvas.drawLine(1250, 1100, 1250, 1400, textPaint);
+//
+//        textPaint.setTextSize(70);
+//        canvas.drawText("300 Rooms", 1100, 1050, textPaint);
     }
 }

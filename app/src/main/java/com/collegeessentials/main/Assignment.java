@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +26,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.collegeessentials.database.ApplicationDatabase;
-import com.collegeessentials.database.AssignmentCountdownTimer;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -95,17 +95,25 @@ public class Assignment extends AppCompatActivity {
                     int yearInt = Integer.parseInt(year);
                     int monthInt = Integer.parseInt(month);
                     int dayInt = Integer.parseInt(day);
-                    //pass in times to custom timer
 
-                    AssignmentCountdownTimer ct = new AssignmentCountdownTimer(0, minuteInt, hourInt, dayInt, monthInt, yearInt);
-                    list.add(new Display(name, ct.getIntervalMillis()));
-
+                    list.add(new Display(name, calculateTime(0, minuteInt, hourInt, dayInt, monthInt, yearInt)));
                     lvItems.setAdapter(new CountdownAdapter(Assignment.this, list));
                 }while (cursor.moveToNext());
             }
         }catch(NullPointerException e){
             e.printStackTrace();
         }
+    }
+
+    private long calculateTime(int second, int minute, int hour, int monthDay, int month, int year){
+        Time futureTime = new Time();
+
+        //set time to due date
+        futureTime.set(second, minute, hour, monthDay, month, year);
+        futureTime.normalize(true);
+        long futureMillis = futureTime.toMillis(true);
+
+        return futureMillis;
     }
 
     @Override

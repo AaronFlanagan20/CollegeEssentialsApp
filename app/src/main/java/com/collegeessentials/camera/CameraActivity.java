@@ -16,8 +16,8 @@ import android.widget.FrameLayout;
 import com.collegeessentials.location.PhoneLocation;
 
 /**
- * Our main camera activity.
- * This class accesses the phones main camera and create a CameraPreview object to sit on top.
+ * Our tests camera activity.
+ * This class accesses the phones tests camera and create a CameraPreview object to sit on top.
  *
  * @version 1.0
  * @see CameraPreview

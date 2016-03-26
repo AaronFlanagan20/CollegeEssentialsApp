@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * The About page is a small simple page explaining the apps main features.
+ * The About page is a small simple page explaining the apps tests features.
  * It also has a link to contact us with any queries regarding the app.
  *
  * @version 1.0

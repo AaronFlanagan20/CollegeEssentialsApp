@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".CollegeSelection"
+            android:name="com.collegeessentials.main.CollegeSelection"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeScreen"
+            android:name="com.collegeessentials.main.HomeScreen"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -37,7 +37,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TimeTable"
+            android:name="com.collegeessentials.main.TimeTable"
             android:label="@string/title_activity_time_table"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -48,7 +48,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Assignment"
+            android:name="com.collegeessentials.main.Assignment"
             android:label="@string/title_activity_assignment"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -58,7 +58,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".About"
+            android:name="com.collegeessentials.main.About"
             android:label="@string/title_activity_about"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

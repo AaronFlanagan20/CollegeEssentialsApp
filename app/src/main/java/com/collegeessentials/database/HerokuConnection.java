@@ -28,7 +28,7 @@ public class HerokuConnection{
 
     public void connect(){
         try {
-            Class.forName("org.postgresql.Driver");//register driver jar file for postgres
+            Class.forName("org.postgresql.Driver");
         }catch (ClassNotFoundException e) {
             System.out.println("Where is your PostgreSQL JDBC Driver? Include it in your library path!");
             e.printStackTrace();

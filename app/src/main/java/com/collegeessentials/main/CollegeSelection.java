@@ -13,10 +13,6 @@ import android.widget.Toast;
 import com.collegeessentials.database.ApplicationDatabase;
 import com.collegeessentials.database.HerokuConnection;
 
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-
 /**
  * The CollegeSelection activity is the initial activity on start-up.
  * It supplies the user with a list of colleges to select.
@@ -42,7 +38,7 @@ public class CollegeSelection extends AppCompatActivity implements ListView.OnIt
         toolbar.setTitle("Select a college");
         setSupportActionBar(toolbar);
 
-        list = (ListView) findViewById(R.id.collegeList);//initialiie list
+        list = (ListView) findViewById(R.id.collegeList);//initialize list
 
         String[] colleges = {"Galway-Mayo Institute of Technology (Galway)","Galway-Mayo Institute of Technology (Letterfrack)",
                 "Galway-Mayo Institute of Technology (Castlebar)", "Athlone Institute of Technology (AIT)", "Dublin Institute of Technology (DIT)",
@@ -58,7 +54,7 @@ public class CollegeSelection extends AppCompatActivity implements ListView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        //TODO: Progress bar and have connection running in background ie. Threads below are messy
         name = (String) list.getItemAtPosition(position);
         Toast.makeText(getApplicationContext(),
                 "" + name, Toast.LENGTH_SHORT)
@@ -70,13 +66,13 @@ public class CollegeSelection extends AppCompatActivity implements ListView.OnIt
         Thread connect = new Thread(){
             public void run() {
                 super.run();
-                server = new HerokuConnection();//attempt a connection to heroku postgres database
+                server = new HerokuConnection();//attempt a connection to heroku postgresql database
             }
         };
 
         try {
             connect.start();//start thread
-            connect.join();//forcing UI thread to wait untill connection is complete
+            connect.join();//forcing UI thread to wait until connection is complete
         }catch (InterruptedException e){
             e.printStackTrace();
         }
@@ -116,7 +112,7 @@ public class CollegeSelection extends AppCompatActivity implements ListView.OnIt
             @Override
             public void run() {
                 super.run();
-                server.getImagesFromDB(getApplicationContext(), name);//pull images from server with the name passed in
+                server.getImagesFromDB(getApplicationContext(), name);//pull images from server with the name passed in, stores in phone memory
             }
         };
 
