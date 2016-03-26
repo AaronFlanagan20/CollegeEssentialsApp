@@ -2,6 +2,7 @@ package com.collegeessentials.main;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
@@ -23,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.collegeessentials.database.ApplicationDatabase;
@@ -161,27 +163,39 @@ public class Assignment extends AppCompatActivity {
     }
     //TODO: Replace dialog with time picker
     private void enterTime(){//input dialog for Time
-        final EditText editText = new EditText(this);
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setView(editText);
-        alert.setTitle("Enter a time");
-        alert.setMessage("Time must be in 24hr format. eg. 13:00  ");
-        alert.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                time = editText.getText().toString();
-                if(!time.matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")){
-                    dialog.cancel();
-                    enterTime();
-                }
-            }
-        });
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        Calendar mCurrentTime = Calendar.getInstance();
+        int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mCurrentTime.get(Calendar.MINUTE);
 
-        alert.create().show();
+        TimePickerDialog mTimePicker;
+        mTimePicker = new TimePickerDialog(Assignment.this,  new TimePickerDialog.OnTimeSetListener() {
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                time = selectedHour + ":" + selectedMinute;
+            }
+        }, hour, minute, false);
+        mTimePicker.setTitle("Select Time");
+        mTimePicker.show();
+//        final EditText editText = new EditText(this);
+//        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+//        alert.setView(editText);
+//        alert.setTitle("Enter a time");
+//        alert.setMessage("Time must be in 24hr format. eg. 13:00  ");
+//        alert.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//                time = editText.getText().toString();
+//                if(!time.matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")){
+//                    dialog.cancel();
+//                    enterTime();
+//                }
+//            }
+//        });
+//        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.cancel();
+//            }
+//        });
+//
+//        alert.create().show();
     }
 
     private void enterDate(){//DatePickerDialog for picking date assignment is due
