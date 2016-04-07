@@ -1,6 +1,10 @@
 package com.collegeessentials.location;
 
 import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -12,40 +16,60 @@ import android.os.Bundle;
  *
  * @version 1.0
  */
-public class PhoneLocation implements LocationListener{
+public class PhoneLocation implements LocationListener, SensorEventListener{
 
     public Context context;
-    public static Location location;
+    private Location fromLocation, toLocation;
+    private LocationManager locationManager;
+    private SensorManager sensorManager;
 
-    private int lat, lng;
+    private double lat, lng;
 
     public PhoneLocation(Context context){
         this.context = context;
     }
 
+    public SensorManager getSensorManager() {
+        return sensorManager;
+    }
+
     public void getPreviousLocations(){
 
-        LocationManager locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+        locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+        sensorManager = (SensorManager) context.getSystemService(context.SENSOR_SERVICE);
 
         Criteria criteria = new Criteria();//criteria for selecting best provider
         String provider = locationManager.getBestProvider(criteria, false);//return any provider whether enabled or not that meets the criteria
         try {
-            location = locationManager.getLastKnownLocation(provider);
+            fromLocation = locationManager.getLastKnownLocation(provider);
+            toLocation = locationManager.getLastKnownLocation(provider);
             locationManager.requestLocationUpdates(provider, 0, 0, this);//receive updates
         }catch (SecurityException e){
             e.printStackTrace();
         }
 
-        // Initialize the location fields
-        if (location != null) {
-            onLocationChanged(location);
+        // Initialize the fromLocation fields
+        if (fromLocation != null) {
+            onLocationChanged(fromLocation);
         }
     }
 
     @Override
     public void onLocationChanged(Location location) {
-        lat = (int) (location.getLatitude());
-        lng = (int) (location.getLongitude());
+        lat =  (location.getLatitude());
+        lng = (location.getLongitude());
+    }
+
+    public LocationManager getLocationManager() {
+        return locationManager;
+    }
+
+    public Location getToLocation() {
+        return toLocation;
+    }
+
+    public Location getFromLocation() {
+        return fromLocation;
     }
 
     public String getLat(){
@@ -70,5 +94,15 @@ public class PhoneLocation implements LocationListener{
 
     @Override
     public void onProviderDisabled(String provider) {
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 }

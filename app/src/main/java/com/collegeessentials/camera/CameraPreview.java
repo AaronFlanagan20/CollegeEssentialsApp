@@ -1,8 +1,6 @@
 package com.collegeessentials.camera;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.util.Log;
 import android.view.Display;
@@ -23,9 +21,13 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     private SurfaceHolder mHolder;
     private Camera mCamera;
+    private boolean isPreviewRunning = false;
+    private Context context;
+    public static int rotate;
 
     public CameraPreview(Context context, Camera camera) {
         super(context);
+        this.context = context;
         mCamera = camera;
 
         // Install a SurfaceHolder.Callback so we get notified when the
@@ -40,6 +42,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         try {
             mCamera.setPreviewDisplay(holder);
             mCamera.startPreview();
+            isPreviewRunning = true;
         } catch (IOException e) {
             Log.d("CameraView", "Error setting camera preview: " + e.getMessage());
         }
@@ -49,6 +52,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             try{
                 if(mCamera != null){
                     mCamera.stopPreview();
+                    isPreviewRunning = false;
                     mCamera.release();
                 }
             }catch(Exception e) {
@@ -56,22 +60,40 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             }
     }
 
-    public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
         // If your preview can change or rotate, take care of those events here.
         // Make sure to stop the preview before resizing or reformatting it.
 
-        if (mHolder.getSurface() == null){
-            // preview surface does not exist
-            return;
+        if(isPreviewRunning) {
+            mCamera.stopPreview();
         }
 
-        // stop preview before making changes
-        try {
-            mCamera.stopPreview();
-            //setCameraDisplay(mCamera);//TODO: Get this working
-        } catch (Exception e){
-            // ignore: tried to stop a non-existent preview
+        Camera.Parameters parameters = mCamera.getParameters();
+        Display display = ((WindowManager) context.getSystemService(context.WINDOW_SERVICE)).getDefaultDisplay();
+
+        if(display.getRotation() == Surface.ROTATION_0)
+        {
+            parameters.setPreviewSize(height, width);
+            mCamera.setDisplayOrientation(90);
         }
+
+        if(display.getRotation() == Surface.ROTATION_90)
+        {
+            parameters.setPreviewSize(width, height);
+        }
+
+        if(display.getRotation() == Surface.ROTATION_180)
+        {
+            parameters.setPreviewSize(height, width);
+        }
+
+        if(display.getRotation() == Surface.ROTATION_270)
+        {
+            parameters.setPreviewSize(width, height);
+            mCamera.setDisplayOrientation(180);
+        }
+
+        mCamera.setParameters(parameters);
 
         // start preview with new settings
         try {
@@ -83,26 +105,10 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         }
     }
 
-    public static int rotate = 0;
 
-    public void setCameraDisplay(Camera camera){
-        Camera.Parameters params = camera.getParameters();
-        Camera.CameraInfo info = new Camera.CameraInfo();
+    //explained here: http://stackoverflow.com/questions/3841122/android-camera-preview-is-sideways
+    public void setCameraDisplay(Camera camera, int width, int height){
 
-        Camera.getCameraInfo(Camera.CameraInfo.CAMERA_FACING_BACK, info);
-
-        Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-        int rotation = display.getRotation();
-        int degrees = 0;
-        switch (rotation) {
-            case Surface.ROTATION_0: degrees = 0; rotate = 0; break;
-            case Surface.ROTATION_90: degrees = 90; rotate = 90; break;
-            case Surface.ROTATION_180: degrees = 180; rotate = 180; break;
-            case Surface.ROTATION_270: degrees = 270; rotate = 270; break;
-        }
-
-        int result = (info.orientation - degrees + 360) % 360;
-        camera.setDisplayOrientation(result);
     }
 
     public void onPause(){

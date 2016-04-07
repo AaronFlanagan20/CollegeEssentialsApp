@@ -26,12 +26,9 @@ import com.collegeessentials.location.PhoneLocation;
 public class CameraActivity extends Activity {
 
     private CameraPreview mCameraPreview;
-    private DrawView drawView;
     FrameLayout alParent;
 
-    private PhoneLocation location;
     private LocationManager locationManager;
-    private Location loc;
     public final static int REQUEST_CODE_A = 1;
 
     @Override
@@ -40,13 +37,14 @@ public class CameraActivity extends Activity {
 
         checkGPSIsEnabled();
 
-        location = new PhoneLocation(this);
-        location.getPreviousLocations();
+        PhoneLocation location = new PhoneLocation(this);//create object
+        location.getPreviousLocations();//intialize locationManager
+
+        locationManager = location.getLocationManager();//return location manager
 
         /* Set the screen orientation to landscape, because
          * the camera preview will be in landscape, and if we
          * don't do this, then we will get a streached image.*/
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         // requesting to turn the title OFF
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -69,7 +67,7 @@ public class CameraActivity extends Activity {
         return c; // returns null if camera is unavailable
     }
 
-    public void Load(){
+    public void load(){
         Camera c = getCameraInstance();
 
         if (c != null){
@@ -84,7 +82,7 @@ public class CameraActivity extends Activity {
             alParent.addView(mCameraPreview);
 
             // Create a new draw view and add it to the layout
-            drawView = new DrawView(this);
+            DrawView drawView = new DrawView(this);
             alParent.addView(drawView);
 
             // Set the layout as the apps content view
@@ -100,6 +98,7 @@ public class CameraActivity extends Activity {
     }
 
     /* Checks if the phone has it's location setting on, location must be on to use camera */
+    //:TODO Runtime permission instead
     public boolean checkGPSIsEnabled(){
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -126,7 +125,7 @@ public class CameraActivity extends Activity {
     @Override
     protected void onResume(){
         super.onResume();
-        Load();
+        load();
     }
 
     @Override
