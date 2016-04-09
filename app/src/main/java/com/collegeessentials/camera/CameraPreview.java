@@ -68,32 +68,32 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             mCamera.stopPreview();
         }
 
-        Camera.Parameters parameters = mCamera.getParameters();
-        Display display = ((WindowManager) context.getSystemService(context.WINDOW_SERVICE)).getDefaultDisplay();
-
-        if(display.getRotation() == Surface.ROTATION_0)
-        {
-            parameters.setPreviewSize(height, width);
-            mCamera.setDisplayOrientation(90);
-        }
-
-        if(display.getRotation() == Surface.ROTATION_90)
-        {
-            parameters.setPreviewSize(width, height);
-        }
-
-        if(display.getRotation() == Surface.ROTATION_180)
-        {
-            parameters.setPreviewSize(height, width);
-        }
-
-        if(display.getRotation() == Surface.ROTATION_270)
-        {
-            parameters.setPreviewSize(width, height);
-            mCamera.setDisplayOrientation(180);
-        }
-
-        mCamera.setParameters(parameters);
+//        Camera.Parameters parameters = mCamera.getParameters();
+//        Display display = ((WindowManager) context.getSystemService(context.WINDOW_SERVICE)).getDefaultDisplay();
+//
+//        if(display.getRotation() == Surface.ROTATION_0)
+//        {
+//            parameters.setPreviewSize(height, width);
+//            mCamera.setDisplayOrientation(90);
+//        }
+//
+//        if(display.getRotation() == Surface.ROTATION_90)
+//        {
+//            parameters.setPreviewSize(width, height);
+//        }
+//
+//        if(display.getRotation() == Surface.ROTATION_180)
+//        {
+//            parameters.setPreviewSize(height, width);
+//        }
+//
+//        if(display.getRotation() == Surface.ROTATION_270)
+//        {
+//            parameters.setPreviewSize(width, height);
+//            mCamera.setDisplayOrientation(180);
+//        }
+//
+//        mCamera.setParameters(parameters);
 
         // start preview with new settings
         try {
@@ -103,12 +103,6 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         } catch (Exception e) {
             Log.d("Problem", "Error starting camera preview: " + e.getMessage());
         }
-    }
-
-
-    //explained here: http://stackoverflow.com/questions/3841122/android-camera-preview-is-sideways
-    public void setCameraDisplay(Camera camera, int width, int height){
-
     }
 
     public void onPause(){
