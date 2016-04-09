@@ -45,6 +45,7 @@ public class CameraActivity extends Activity {
         /* Set the screen orientation to landscape, because
          * the camera preview will be in landscape, and if we
          * don't do this, then we will get a streached image.*/
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         // requesting to turn the title OFF
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
