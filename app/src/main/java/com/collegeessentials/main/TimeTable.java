@@ -129,7 +129,14 @@ public class TimeTable extends AppCompatActivity implements View.OnClickListener
         final TextView view = (TextView) v;//convert view item to sub-child TextView
         AlertDialog.Builder alert;
         if(view.getText().equals("")){
-            startActivity(new Intent(this, TimetableInput.class));//if field is null start input activity
+            try {
+                String id = getIDName(view, R.id.class).toLowerCase();
+                Intent intent = new Intent(this, TimetableInput.class);
+                intent.putExtra("day_time", id);
+                startActivity(intent);//if field is null start input activity
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }else{//if not null open up a dialog page with an option to delete the selected field
             alert = new AlertDialog.Builder(this);
             alert.setTitle("Delete class ?");
