@@ -68,6 +68,7 @@ public class DrawView extends SurfaceView{
         return brng;
     }
 
+    //TODO: Fine tune, rotate dynamically
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

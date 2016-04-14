@@ -96,6 +96,10 @@ public class ApplicationDatabase{
         db.execSQL("DELETE FROM " + TABLE_MARKERS +  " WHERE title ='" + title +"'");
     }
 
+    public void executeQuery(String query){
+        db.execSQL(query);
+    }
+
     /**
      * SQLiteOpenHelper is used to manage database creation and version management
      */

@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -175,27 +176,6 @@ public class Assignment extends AppCompatActivity {
         }, hour, minute, false);
         mTimePicker.setTitle("Select Time");
         mTimePicker.show();
-//        final EditText editText = new EditText(this);
-//        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-//        alert.setView(editText);
-//        alert.setTitle("Enter a time");
-//        alert.setMessage("Time must be in 24hr format. eg. 13:00  ");
-//        alert.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) {
-//                time = editText.getText().toString();
-//                if(!time.matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")){
-//                    dialog.cancel();
-//                    enterTime();
-//                }
-//            }
-//        });
-//        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.cancel();
-//            }
-//        });
-//
-//        alert.create().show();
     }
 
     private void enterDate(){//DatePickerDialog for picking date assignment is due
@@ -247,9 +227,10 @@ public class Assignment extends AppCompatActivity {
      * CountdownAdapter acts as a custom adapter for our list
      * It populates the screen with our assignments and constantly updates their times
      */
-    public class CountdownAdapter extends ArrayAdapter<Display> {
+    public class CountdownAdapter extends ArrayAdapter<Display> implements View.OnClickListener{
 
         private LayoutInflater lf;
+        ViewHolder holder;
         private final List<ViewHolder> lstHolders;
         private Handler mHandler = new Handler();
         private Runnable updateRemainingTimeRunnable = new Runnable() {
@@ -282,6 +263,31 @@ public class Assignment extends AppCompatActivity {
         }
 
         @Override
+        public void onClick(View v) {
+            final EditText editText = new EditText(getContext());
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+            alert.setView(editText);
+            alert.setTitle("Rename assignment");
+            alert.setMessage("Enter name of the assignment. ");
+            alert.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    ad.executeQuery("UPDATE assignment SET name = '" + editText.getText().toString() + "'" +
+                            "WHERE name = '" + holder.name.getText().toString() + "'");
+
+                    Assignment.super.recreate();//refresh screen with removed assignment
+                }
+            });
+            alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            alert.create().show();
+        }
+
+        @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             /*
                 LIST
@@ -289,11 +295,11 @@ public class Assignment extends AppCompatActivity {
                 holder
                 holder
              */
-            ViewHolder holder;
             if (convertView == null) {
                 holder = new ViewHolder();//get our view
                 convertView = lf.inflate(R.layout.assignment_list_items, parent, false);//add our list
-                holder.name = (TextView) convertView.findViewById(R.id.name);//setup out name
+                holder.name = (TextView) convertView.findViewById(R.id.name);// name of assignment
+                holder.name.setOnClickListener(this);
                 holder.tvTimeRemaining = (TextView) convertView.findViewById(R.id.timeRemaining);//and time left
                 deleteButton = (ImageButton) convertView.findViewById(R.id.deleteButton);
                 convertView.setTag(holder);//set our view to hold these
