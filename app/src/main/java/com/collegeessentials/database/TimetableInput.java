@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.collegeessentials.main.CollegeSelection;
 import com.collegeessentials.main.R;
+import com.collegeessentials.main.TimeTable;
 
 import java.util.Calendar;
 
@@ -59,28 +60,75 @@ public class TimetableInput extends AppCompatActivity implements View.OnClickLis
         ad = new ApplicationDatabase(this, CollegeSelection.name);
         ad.createDatabase();
 
-        String id = getIntent().getStringExtra("day_time");
-        String[] split = id.split("_");
+        if(TimeTable.feildClick) {
+            String id = getIntent().getStringExtra("day_time");
+            String[] split = id.split("_");
 
-        switch(split[0]){
-            case "mon": selectedDay = "mon"; dayPicker.setText("Monday"); break;
-            case "tue": selectedDay = "tue"; dayPicker.setText("Tuesday"); break;
-            case "wed": selectedDay = "wed"; dayPicker.setText("Wednesday"); break;
-            case "thu": selectedDay = "thu"; dayPicker.setText("Thursday"); break;
-            case "fri": selectedDay = "fri"; dayPicker.setText("Friday"); break;
-        }
+            switch (split[0]) {
+                case "mon":
+                    selectedDay = "mon";
+                    dayPicker.setText("Monday");
+                    break;
+                case "tue":
+                    selectedDay = "tue";
+                    dayPicker.setText("Tuesday");
+                    break;
+                case "wed":
+                    selectedDay = "wed";
+                    dayPicker.setText("Wednesday");
+                    break;
+                case "thu":
+                    selectedDay = "thu";
+                    dayPicker.setText("Thursday");
+                    break;
+                case "fri":
+                    selectedDay = "fri";
+                    dayPicker.setText("Friday");
+                    break;
+            }
 
-        switch (split[1]){
-            case "nine": selectedTime = "nine"; time.setText("9:00"); break;
-            case "ten": selectedTime = "ten"; time.setText("10:00"); break;
-            case "eleven": selectedTime = "eleven"; time.setText("11:00"); break;
-            case "twelve": selectedTime = "twelve"; time.setText("12:00"); break;
-            case "one": selectedTime = "one"; time.setText("13:00"); break;
-            case "two": selectedTime = "two"; time.setText("14:00"); break;
-            case "three": selectedTime = "three"; time.setText("15:00"); break;
-            case "four": selectedTime = "four"; time.setText("16:00"); break;
-            case "five": selectedTime = "five"; time.setText("17:00"); break;
-            case "six": selectedTime = "six"; time.setText("18:00"); break;
+            switch (split[1]) {
+                case "nine":
+                    selectedTime = "nine";
+                    time.setText("9:00");
+                    break;
+                case "ten":
+                    selectedTime = "ten";
+                    time.setText("10:00");
+                    break;
+                case "eleven":
+                    selectedTime = "eleven";
+                    time.setText("11:00");
+                    break;
+                case "twelve":
+                    selectedTime = "twelve";
+                    time.setText("12:00");
+                    break;
+                case "one":
+                    selectedTime = "one";
+                    time.setText("13:00");
+                    break;
+                case "two":
+                    selectedTime = "two";
+                    time.setText("14:00");
+                    break;
+                case "three":
+                    selectedTime = "three";
+                    time.setText("15:00");
+                    break;
+                case "four":
+                    selectedTime = "four";
+                    time.setText("16:00");
+                    break;
+                case "five":
+                    selectedTime = "five";
+                    time.setText("17:00");
+                    break;
+                case "six":
+                    selectedTime = "six";
+                    time.setText("18:00");
+                    break;
+            }
         }
 
     }

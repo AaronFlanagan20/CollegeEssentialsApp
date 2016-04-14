@@ -1,6 +1,5 @@
 package com.collegeessentials.camera;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,6 +11,9 @@ import android.util.Log;
 import android.view.SurfaceView;
 
 import com.collegeessentials.location.PhoneLocation;
+import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.model.*;
+import com.google.maps.android.SphericalUtil;
 
 /**
  * This class will act as a canvas on top of the camera
@@ -41,32 +43,29 @@ public class DrawView extends SurfaceView{
 
         loc.getPreviousLocations();//stores last location
 
-        to = loc.getToLocation();
-        from = loc.getFromLocation();
-
-        to.setLatitude(53.483703);
-        to.setLongitude(-6.1450036);
     }
 
-    private double getDegrees(double lat1, double long1, double lat2, double long2){
-
-        double dLon = Math.toRadians(long2 - long1);
-
-        Log.i("Locs", lat1 + " " + lat2 + long1 + " " + long2);
-
-        lat1 = Math.toRadians(lat1);
-        lat2 = Math.toRadians(lat2);
-
-        double y = Math.sin(dLon) * Math.cos(lat2);
-        double x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
-
-        double brng = Math.toDegrees(Math.atan2(y, x));
-
-        brng = (brng + 360) % 360;
-        brng = 360 - brng;
-
-        return brng;
-    }
+//    private double getDegrees(double lat1, double long1, double lat2, double long2){
+//
+////        double dLon = Math.toRadians(long2 - long1);
+////
+////        Log.i("Locs", lat1 + " " + lat2 + long1 + " " + long2);
+////
+////        lat1 = Math.toRadians(lat1);
+////        lat2 = Math.toRadians(lat2);
+////
+////        double y = Math.sin(dLon) * Math.cos(lat2);
+////        double x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+////
+////        double brng = Math.toDegrees(Math.atan2(y, x));
+////
+////        brng = (brng + 360) % 360;
+////        brng = 360 - brng;
+//
+//        double b = from.bearingTo(to);
+//
+//        return b;
+//    }
 
     //TODO: Fine tune, rotate dynamically
     @Override
@@ -75,8 +74,14 @@ public class DrawView extends SurfaceView{
 
         canvas.drawColor(0, PorterDuff.Mode.CLEAR);
 
-        degrees = getDegrees(from.getLatitude(), from.getLongitude(), to.getLatitude(), to.getLongitude());
+        to = loc.getToLocation();
+        from = loc.getFromLocation();
 
+        to.setLatitude(53.2837255);
+        to.setLongitude(-9.0375676);
+
+        degrees = from.bearingTo(to);
+        
         canvas.rotate((float) degrees, canvas.getWidth() / 2, canvas.getHeight() / 2);
 
         //gmit canteen 53.2791608,-9.0105963

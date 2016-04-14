@@ -33,6 +33,7 @@ public class TimeTable extends AppCompatActivity implements View.OnClickListener
 
     private TableLayout layout;
     private ApplicationDatabase ad;
+    public static boolean feildClick = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +97,7 @@ public class TimeTable extends AppCompatActivity implements View.OnClickListener
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();//get item id
         if(id == R.id.add_icon){//if + sign is hit
+            feildClick = false;
             startActivity(new Intent(this, TimetableInput.class));//start activity
         }
         return super.onOptionsItemSelected(item);
@@ -133,6 +135,7 @@ public class TimeTable extends AppCompatActivity implements View.OnClickListener
                 String id = getIDName(view, R.id.class).toLowerCase();
                 Intent intent = new Intent(this, TimetableInput.class);
                 intent.putExtra("day_time", id);
+                feildClick = true;
                 startActivity(intent);//if field is null start input activity
             } catch (Exception e) {
                 e.printStackTrace();
