@@ -230,7 +230,7 @@ public class Assignment extends AppCompatActivity {
     public class CountdownAdapter extends ArrayAdapter<Display> implements View.OnClickListener{
 
         private LayoutInflater lf;
-        ViewHolder holder;
+        private ViewHolder holder;
         private final List<ViewHolder> lstHolders;
         private Handler mHandler = new Handler();
         private Runnable updateRemainingTimeRunnable = new Runnable() {
@@ -266,6 +266,8 @@ public class Assignment extends AppCompatActivity {
         public void onClick(View v) {
             final EditText editText = new EditText(getContext());
 
+            final TextView view = (TextView) v;
+            Log.i("Name", view.getText().toString());
             AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
             alert.setView(editText);
             alert.setTitle("Rename assignment");
@@ -273,11 +275,12 @@ public class Assignment extends AppCompatActivity {
             alert.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     ad.executeQuery("UPDATE assignment SET name = '" + editText.getText().toString() + "'" +
-                            "WHERE name = '" + holder.name.getText().toString() + "'");
+                            "WHERE name = '" + view.getText().toString() + "'");
 
                     Assignment.super.recreate();//refresh screen with removed assignment
                 }
             });
+
             alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
