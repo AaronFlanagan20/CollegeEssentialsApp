@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -97,7 +98,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onMapClick(final LatLng latLng) {
                 final EditText editText = new EditText(getApplicationContext());
-
+                editText.setTextColor(Color.BLACK);
                 AlertDialog.Builder alert = new AlertDialog.Builder(fl.getContext());
                 alert.setView(editText);
                 alert.setTitle("Marker Title");

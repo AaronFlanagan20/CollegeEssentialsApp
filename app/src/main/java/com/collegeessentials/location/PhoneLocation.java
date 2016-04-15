@@ -16,12 +16,11 @@ import android.os.Bundle;
  *
  * @version 1.0
  */
-public class PhoneLocation implements LocationListener, SensorEventListener{
+public class PhoneLocation implements LocationListener{
 
     public Context context;
     private Location fromLocation, toLocation;
     private LocationManager locationManager;
-    private SensorManager sensorManager;
 
     private double lat, lng;
 
@@ -29,14 +28,9 @@ public class PhoneLocation implements LocationListener, SensorEventListener{
         this.context = context;
     }
 
-    public SensorManager getSensorManager() {
-        return sensorManager;
-    }
-
     public void getPreviousLocations(){
 
         locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
-        sensorManager = (SensorManager) context.getSystemService(context.SENSOR_SERVICE);
 
         Criteria criteria = new Criteria();//criteria for selecting best provider
         String provider = locationManager.getBestProvider(criteria, false);//return any provider whether enabled or not that meets the criteria
@@ -53,6 +47,8 @@ public class PhoneLocation implements LocationListener, SensorEventListener{
             onLocationChanged(fromLocation);
         }
     }
+
+
 
     @Override
     public void onLocationChanged(Location location) {
@@ -83,26 +79,11 @@ public class PhoneLocation implements LocationListener, SensorEventListener{
     }
 
     @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
+    public void onStatusChanged(String provider, int status, Bundle extras) {}
 
     @Override
-    public void onProviderEnabled(String provider) {
-
-    }
+    public void onProviderEnabled(String provider) {}
 
     @Override
-    public void onProviderDisabled(String provider) {
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
+    public void onProviderDisabled(String provider) {}
 }
