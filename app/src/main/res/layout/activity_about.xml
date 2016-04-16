@@ -28,19 +28,26 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="@drawable/background">
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/cap_icon"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="75dp" />
 
         <TextView
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:text="CollegeEssentials"
             android:gravity="center"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:typeface="serif"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="90dp"
-            android:textColor="@color/colorPrimaryDark" />
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="100dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/textView7" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,7 +67,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Depending on your location, arrows will be displayed on camera directing you to certain sections of the college that you are in."
+            android:text="Depending on your location, an arrow will be displayed on camera directing you to certain sections of the college that you are in."
             android:gravity="center"
             android:textColor="@color/colorPrimaryDark"
             android:typeface="serif"
@@ -74,12 +81,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CollegeEssentials' main features: \n1. Navigation around your college. \n2 Google maps for directions around the area. \n3. Timetable section to store your classes. \n4. A colour coded assignment countdown timer:"
+            android:text="CollegeEssentials' main features: \n1. Navigation around your college. \n2. Google maps for directions around the area. \n3. Timetable section to store your classes. \n4. A colour coded assignment countdown timer:"
             android:textSize="16dp"
             android:textColor="@color/colorPrimaryDark"
             android:id="@+id/textView"
             android:layout_marginTop="125dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="10dp"
             android:layout_below="@+id/aboutAppText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
