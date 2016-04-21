@@ -6,6 +6,8 @@ CollegeEssentials is an app made to help all students get through the hard life 
 3. Assignment countdown timers so that you never forget about that deadline again.
 4. Google maps section to store your favourite places in town and you won't get lost in the new city. :)
 
+Please see our video demo [here](https://www.youtube.com/watch?v=9oNZN0csfSI&feature=youtu.be)
+
 ## Installation
 The app is still currently under construction. It will be fully developed and working for Galway-Mayo Institute of Technology first because that is where we are based. It will then be updated to accomadate the other college's listed. At this point, the only way to install the app is to either fork this repo or download the zip file, both methods require the project to be opened in Android Studio and ran using the emulator or your personal android device. **Note** if your laptop/PC doesn't support hardware virtualization and you cannot install intels haxm software, using your own device is encouraged.
 
